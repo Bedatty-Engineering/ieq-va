@@ -1,0 +1,27 @@
+---
+description: Core conventions for this Astro church website
+alwaysApply: true
+---
+
+# Astro Church Site Conventions
+
+## Stack
+- Astro v5 with static output
+- Tailwind CSS via `@astrojs/tailwind`
+- TypeScript for logic and shared types
+
+## Architecture
+- Keep UI in `src/components` and `src/layouts`
+- Keep future data access in `src/lib`
+- Keep shared domain types in `src/types`
+- Do not implement backend, auth, or event logic in this version
+
+## Validation
+- `npm run build` is the acceptance gate
+- Prefer simple static pages and minimal client-side JavaScript
+
+## Styling
+- Use global semantic classes from `src/styles/global.css` for repeated patterns
+- Keep the visual language calm, warm, and institutional
+- Avoid SaaS-style interface patterns
+

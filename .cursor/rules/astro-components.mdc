@@ -1,0 +1,21 @@
+---
+description: Patterns for Astro components, pages and layouts
+globs: src/**/*.astro
+alwaysApply: false
+---
+
+# Astro Component Patterns
+
+## Frontmatter
+- Order frontmatter as imports, local constants, then derived values
+- Type props explicitly with `interface Props`
+
+## Roles
+- Pages live in `src/pages`
+- Layouts live in `src/layouts` and render `<slot />`
+- Components live in `src/components` and stay presentational
+
+## Routing
+- Use file-based static routes only for this version
+- Top-level pages are `/`, `/sobre`, and `/localizacao`
+

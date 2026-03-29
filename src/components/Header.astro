@@ -1,0 +1,81 @@
+---
+interface NavItem {
+  href: string;
+  label: string;
+}
+
+const navItems: NavItem[] = [
+  { href: "/", label: "Home" },
+  { href: "/sobre", label: "Sobre" },
+  { href: "/localizacao", label: "Localização" }
+];
+
+const currentPath = Astro.url.pathname;
+const isOverlayHeader = currentPath === "/";
+---
+
+<header
+  id="site-header"
+  data-overlay-header={isOverlayHeader ? "true" : "false"}
+  class:list={["site-header", !isOverlayHeader && "is-scrolled"]}
+>
+  <div class="w-full pt-0">
+    <div class="header-shell">
+      <div class="site-container flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between sm:px-0">
+        <a href="/" class="flex max-w-max items-center gap-4">
+          <img
+            src="/images/LOGO_QUADRANGULAR_ATUAL.png"
+            alt="Logo da 5ª Igreja do Evangelho Quadrangular de Vila Arlindo"
+            class="brand-logo h-14 w-auto max-w-[16rem] object-contain sm:h-16 sm:max-w-[18rem]"
+          />
+          <div class="header-brand-copy hidden min-[940px]:block">
+            <p class="text-xs font-semibold uppercase tracking-[0.28em] text-white/65">5IEQ</p>
+            <p class="text-xl font-semibold uppercase tracking-[0.14em] text-white">Vila Arlindo</p>
+          </div>
+        </a>
+
+        <nav aria-label="Navegação principal" class="site-nav">
+          {
+            navItems.map((item) => (
+              <a
+                href={item.href}
+                aria-current={currentPath === item.href ? "page" : undefined}
+                class:list={[
+                  "nav-link",
+                  currentPath === item.href && "nav-link-active"
+                ]}
+              >
+                {item.label}
+              </a>
+            ))
+          }
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script is:inline>
+  const header = document.getElementById("site-header");
+  const isOverlayHeader = header?.dataset.overlayHeader === "true";
+  const hero = document.getElementById("home-hero");
+  const syncHeader = () => {
+    if (!header) return;
+    if (!isOverlayHeader) {
+      header.classList.add("is-scrolled");
+      return;
+    }
+
+    if (!hero) {
+      header.classList.toggle("is-scrolled", window.scrollY > 24);
+      return;
+    }
+
+    const heroBottom = hero.getBoundingClientRect().bottom;
+    const headerHeight = header.getBoundingClientRect().height;
+    header.classList.toggle("is-scrolled", heroBottom <= headerHeight);
+  };
+
+  syncHeader();
+  window.addEventListener("scroll", syncHeader, { passive: true });
+</script>
