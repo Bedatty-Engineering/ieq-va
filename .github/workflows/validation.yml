@@ -36,5 +36,7 @@ jobs:
       - name: Verify build artifacts
         run: |
           test -f dist/index.html
-          test -f dist/og-image.png
-          test -f dist/sitemap-index.xml
+          test -f dist/cronograma/index.html
+          test -f dist/grupos/index.html
+          test -f dist/localizacao/index.html
+          test -f dist/sobre/index.html
