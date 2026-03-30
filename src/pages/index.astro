@@ -38,21 +38,34 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   <section class="site-container pb-12 sm:pb-16">
     <div class="grid gap-6 md:grid-cols-3">
       <article class="feature-card text-center">
-        <span class="feature-icon">A</span>
+        <span class="feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg-lg">
+            <path d="M12 21s-6.5-4.35-8.5-8.18C1.85 9.7 3.56 6 7.38 6c1.98 0 3.25 1.05 4.12 2.28C12.37 7.05 13.64 6 15.62 6c3.82 0 5.53 3.7 3.88 6.82C18.5 16.65 12 21 12 21Z"></path>
+          </svg>
+        </span>
         <h2 class="font-serif text-3xl font-semibold text-text">Amor</h2>
         <p class="mt-3 text-base leading-7 text-muted">
           Recebemos pessoas com atenção, escuta e cuidado, valorizando cada família que chega.
         </p>
       </article>
       <article class="feature-card text-center">
-        <span class="feature-icon">C</span>
+        <span class="feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg-lg">
+            <path d="M7 11.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm10 0a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7ZM2.5 19a4.5 4.5 0 0 1 9 0M12.5 19a4.5 4.5 0 0 1 9 0"></path>
+          </svg>
+        </span>
         <h2 class="font-serif text-3xl font-semibold text-text">Comunhão</h2>
         <p class="mt-3 text-base leading-7 text-muted">
           Fortalecemos vínculos locais por meio de encontros de oração, culto e convivência cristã.
         </p>
       </article>
       <article class="feature-card text-center">
-        <span class="feature-icon">P</span>
+        <span class="feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg-lg">
+            <path d="M6 4.5h9.5A2.5 2.5 0 0 1 18 7v12.5H8.5A2.5 2.5 0 0 0 6 22V4.5Zm0 0v15"></path>
+            <path d="M9.5 8.5h5M9.5 12h5M9.5 15.5h3.5"></path>
+          </svg>
+        </span>
         <h2 class="font-serif text-3xl font-semibold text-text">Palavra</h2>
         <p class="mt-3 text-base leading-7 text-muted">
           Mantemos a mensagem bíblica no centro da vida da igreja, com clareza e simplicidade.
@@ -74,16 +87,35 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         <div class="eyebrow-rule"></div>
         <div class="mt-8 grid gap-4 sm:grid-cols-2">
           <div class="info-item">
-            <p class="section-kicker">Culto e oração</p>
-            <p class="mt-2 text-base leading-7 text-muted">
-              Reuniões regulares para adoração, intercessão e fortalecimento espiritual.
-            </p>
+            <div class="icon-card-row">
+              <span class="icon-badge-sm" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg">
+                  <path d="M12 3c-1.9 2.5-4 5.24-4 8.22A4 4 0 0 0 12 15.2a4 4 0 0 0 4-3.98C16 8.24 13.9 5.5 12 3Z"></path>
+                  <path d="M7.5 15.5A4.5 4.5 0 0 0 12 20a4.5 4.5 0 0 0 4.5-4.5"></path>
+                </svg>
+              </span>
+              <div>
+                <p class="section-kicker">Culto e oração</p>
+                <p class="mt-2 text-base leading-7 text-muted">
+                  Reuniões regulares para adoração, intercessão e fortalecimento espiritual.
+                </p>
+              </div>
+            </div>
           </div>
           <div class="info-item">
-            <p class="section-kicker">Vida em comunidade</p>
-            <p class="mt-2 text-base leading-7 text-muted">
-              Encontros que aproximam pessoas e reforçam o cuidado mútuo dentro da igreja local.
-            </p>
+            <div class="icon-card-row">
+              <span class="icon-badge-sm" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg">
+                  <path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6Zm8 0a3 3 0 1 1 0-6 3 3 0 0 1 0 6ZM3.5 19a4.5 4.5 0 0 1 9 0M11.5 19a4.5 4.5 0 0 1 9 0"></path>
+                </svg>
+              </span>
+              <div>
+                <p class="section-kicker">Vida em comunidade</p>
+                <p class="mt-2 text-base leading-7 text-muted">
+                  Encontros que aproximam pessoas e reforçam o cuidado mútuo dentro da igreja local.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </article>
@@ -112,42 +144,74 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
   <section class="site-container pb-12 sm:pb-16">
     <div class="grid gap-6 md:grid-cols-2">
-      <article class="media-block overflow-hidden">
-        <img
-          src="/images/image.png"
-          alt="Ambiente da igreja"
-          class="h-64 w-full object-cover sm:h-80"
-        />
-        <div class="p-8">
-          <p class="section-kicker">Encontros</p>
-          <h2 class="mt-4 font-serif text-4xl font-semibold leading-none text-text">Programação regular da comunidade</h2>
+      <article class="section-card p-8 sm:p-10">
+        <span class="icon-badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg-lg">
+            <path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6Zm8 0a3 3 0 1 1 0-6 3 3 0 0 1 0 6ZM3.5 19a4.5 4.5 0 0 1 9 0M11.5 19a4.5 4.5 0 0 1 9 0"></path>
+          </svg>
+        </span>
+        <div class="mt-6">
+          <p class="section-kicker">Grupos e encontros</p>
+          <h2 class="mt-4 font-serif text-4xl font-semibold leading-none text-text">Acompanhe a vida da igreja sem repetir informação.</h2>
           <p class="mt-4 text-base leading-8 text-muted">
-            A agenda da igreja é marcada por encontros de oração, jovens, família e reuniões específicas ao longo do mês.
+            Os grupos da comunidade e os horários públicos estão organizados em páginas próprias, facilitando a consulta de forma mais direta.
           </p>
-          <a href="/localizacao" class="mt-6 inline-flex text-sm font-semibold text-accent hover:text-text">
-            Ver horários
-          </a>
+          <div class="mt-6 flex flex-col gap-3 sm:flex-row">
+            <a href="/grupos" class="inline-flex text-sm font-semibold text-accent hover:text-text">
+              Ver grupos
+            </a>
+            <a href="/localizacao" class="inline-flex text-sm font-semibold text-accent hover:text-text">
+              Ver horários
+            </a>
+          </div>
         </div>
       </article>
 
       <article class="section-card p-8 sm:p-10">
         <p class="section-kicker">Agenda</p>
-        <h2 class="mt-4 font-serif text-4xl font-semibold leading-none text-text">Momentos públicos da semana e do mês</h2>
-        <div class="mt-8 space-y-4">
-          <div class="stat-card">
-            <p class="section-kicker">Quarta-feira</p>
-            <p class="mt-2 text-3xl font-semibold text-text">19h</p>
-            <p class="mt-2 text-sm leading-7 text-muted">Culto de oração</p>
+        <h2 class="mt-4 font-serif text-4xl font-semibold leading-none text-text">Momentos principais da comunidade</h2>
+        <div class="mt-8 grid gap-4">
+          <div class="info-item">
+            <div class="icon-card-row">
+              <span class="icon-badge-sm" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg">
+                  <circle cx="12" cy="12" r="8"></circle>
+                  <path d="M12 8v4l2.5 2.5"></path>
+                </svg>
+              </span>
+              <div>
+                <p class="section-kicker">Quarta-feira</p>
+                <p class="mt-2 text-base leading-7 text-muted">19h · Culto de oração</p>
+              </div>
+            </div>
           </div>
-          <div class="stat-card">
-            <p class="section-kicker">2ª sexta</p>
-            <p class="mt-2 text-3xl font-semibold text-text">20h</p>
-            <p class="mt-2 text-sm leading-7 text-muted">Encontro de jovens</p>
+          <div class="info-item">
+            <div class="icon-card-row">
+              <span class="icon-badge-sm" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg">
+                  <circle cx="12" cy="12" r="8"></circle>
+                  <path d="M12 8v4l2.5 2.5"></path>
+                </svg>
+              </span>
+              <div>
+                <p class="section-kicker">2ª sexta</p>
+                <p class="mt-2 text-base leading-7 text-muted">20h · Encontro de jovens</p>
+              </div>
+            </div>
           </div>
-          <div class="stat-card">
-            <p class="section-kicker">Sábado</p>
-            <p class="mt-2 text-3xl font-semibold text-text">19h</p>
-            <p class="mt-2 text-sm leading-7 text-muted">Culto da família</p>
+          <div class="info-item">
+            <div class="icon-card-row">
+              <span class="icon-badge-sm" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg">
+                  <circle cx="12" cy="12" r="8"></circle>
+                  <path d="M12 8v4l2.5 2.5"></path>
+                </svg>
+              </span>
+              <div>
+                <p class="section-kicker">Sábado</p>
+                <p class="mt-2 text-base leading-7 text-muted">19h · Culto da família e crianças</p>
+              </div>
+            </div>
           </div>
         </div>
       </article>
