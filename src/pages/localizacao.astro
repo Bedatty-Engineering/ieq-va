@@ -6,10 +6,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   title="Localização | 5IEQ Vila Arlindo"
   description="Veja a referência de localização e a programação da Igreja Quadrangular Vila Arlindo."
 >
-  <section class="site-container pb-12 pt-28 sm:pb-16 sm:pt-32">
-    <div class="page-hero p-8 text-center sm:p-12">
+  <section class="site-container pb-10 pt-24 sm:pb-16 sm:pt-32">
+    <div class="page-hero p-6 text-center sm:p-12">
       <p class="section-kicker">Localização e Horários</p>
-      <h1 class="mt-4 font-serif text-5xl font-semibold leading-[0.92] tracking-[-0.04em] text-text sm:text-6xl">
+      <h1 class="mt-4 font-serif text-4xl font-semibold leading-[0.95] tracking-[-0.04em] text-text sm:text-6xl">
         Venha nos visitar. Estamos de portas abertas para receber você.
       </h1>
       <p class="mx-auto mt-6 max-w-3xl section-copy">
@@ -21,17 +21,17 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
   <section class="site-container pb-12 sm:pb-16">
     <div class="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
-      <div class="section-card min-h-[480px] overflow-hidden">
+      <div class="section-card min-h-[320px] overflow-hidden sm:min-h-[480px]">
         <iframe
           title="Mapa da 5ª Igreja do Evangelho Quadrangular de Vila Arlindo"
           src="https://maps.google.com/maps?q=-29.6458463,-52.2960489&t=k&z=17&ie=UTF8&iwloc=&output=embed"
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
-          class="block h-full min-h-[480px] w-full border-0"
+          class="block h-full min-h-[320px] w-full border-0 sm:min-h-[480px]"
         ></iframe>
       </div>
 
-      <article class="section-card p-8 sm:p-10">
+      <article class="section-card p-6 sm:p-10">
         <span class="icon-badge" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg-lg">
             <path d="M12 21s6-5.13 6-10a6 6 0 1 0-12 0c0 4.87 6 10 6 10Z"></path>
@@ -39,7 +39,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           </svg>
         </span>
         <p class="section-kicker">Informações</p>
-        <h2 class="mt-4 font-serif text-4xl font-semibold leading-none text-text">Como chegar e quando participar</h2>
+        <h2 class="mt-4 font-serif text-3xl font-semibold leading-none text-text sm:text-4xl">Como chegar e quando participar</h2>
 
         <div class="mt-8 space-y-4">
           <div class="info-item">
@@ -99,7 +99,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           href="https://www.google.com/maps/place/5%C2%AA+Igreja+do+Evangelho+Quadrangular+de+Vila+Arlindo/@-29.6458416,-52.2986292,17z/data=!3m1!4b1!4m6!3m5!1s0x951c971cdc06b81d:0xbd292610bdb25035!8m2!3d-29.6458463!4d-52.2960489!16s%2Fg%2F11vhtm1f9m"
           target="_blank"
           rel="noreferrer"
-          class="mt-8 inline-flex rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#8e5e24]"
+          class="mt-8 inline-flex w-full justify-center rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#8e5e24] sm:w-auto"
         >
           Abrir rota no Google Maps
         </a>
@@ -107,7 +107,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </div>
   </section>
 
-  <section class="site-container pb-12 sm:pb-16">
+  <section class="site-container pb-10 sm:pb-16">
     <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
       <article class="feature-card">
         <span class="icon-badge" aria-hidden="true">
@@ -192,9 +192,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </div>
   </section>
 
-  <section class="site-container pb-16 sm:pb-20">
+  <section class="site-container pb-14 sm:pb-20">
     <div class="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-      <article class="section-card p-8 sm:p-10">
+      <article class="section-card p-6 sm:p-10">
         <p class="section-kicker">Perguntas Frequentes</p>
         <div class="mt-6 space-y-4">
           <div class="info-item">
