@@ -1,0 +1,20 @@
+---
+title: "Nome do evento"
+startDate: "2026-01-01T19:00:00-03:00"
+endDate: "2026-01-01T21:00:00-03:00"
+location: "5ª Igreja do Evangelho Quadrangular de Vila Arlindo"
+summary: "Resumo curto para divulgação e para o link do Google Agenda."
+allDay: false
+published: true
+recurrence:
+  frequency: weekly
+  until: "2026-12-31T19:00:00-03:00"
+  interval: 1
+  nth: 1
+---
+
+Descreva aqui os detalhes do evento em Markdown.
+
+- Tema ou propósito
+- Público esperado
+- Informações extras de participação
