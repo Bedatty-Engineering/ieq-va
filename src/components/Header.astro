@@ -23,7 +23,7 @@ const isOverlayHeader = currentPath === "/";
 >
   <div class="w-full pt-0">
     <div class="header-shell">
-      <div class="site-container flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between sm:px-0">
+      <div class="site-container flex items-center justify-between gap-4 sm:px-0">
         <a href="/" class="flex max-w-max items-center gap-4">
           <img
             src="/images/LOGO_QUADRANGULAR_ATUAL.png"
@@ -36,12 +36,28 @@ const isOverlayHeader = currentPath === "/";
           </div>
         </a>
 
-        <nav aria-label="Navegação principal" class="site-nav">
+        <button
+          type="button"
+          class="menu-toggle md:hidden"
+          aria-expanded="false"
+          aria-controls="site-nav"
+          aria-label="Abrir menu"
+          data-menu-toggle
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <div class="site-nav-backdrop" data-menu-backdrop></div>
+
+        <nav id="site-nav" aria-label="Navegação principal" class="site-nav" data-site-nav>
           {
             navItems.map((item) => (
               <a
                 href={item.href}
                 aria-current={currentPath === item.href ? "page" : undefined}
+                style={`--nav-item-index:${navItems.indexOf(item)};`}
                 class:list={[
                   "nav-link",
                   currentPath === item.href && "nav-link-active"
@@ -61,6 +77,36 @@ const isOverlayHeader = currentPath === "/";
   const header = document.getElementById("site-header");
   const isOverlayHeader = header?.dataset.overlayHeader === "true";
   const hero = document.getElementById("home-hero");
+  const menuToggle = header?.querySelector("[data-menu-toggle]");
+  const nav = header?.querySelector("[data-site-nav]");
+  const backdrop = header?.querySelector("[data-menu-backdrop]");
+  const navLinks = nav ? Array.from(nav.querySelectorAll("a")) : [];
+
+  const closeMenu = () => {
+    if (!header || !menuToggle) return;
+    header.classList.remove("menu-open");
+    document.body.classList.remove("menu-open");
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", "Abrir menu");
+  };
+
+  const openMenu = () => {
+    if (!header || !menuToggle) return;
+    header.classList.add("menu-open");
+    document.body.classList.add("menu-open");
+    menuToggle.setAttribute("aria-expanded", "true");
+    menuToggle.setAttribute("aria-label", "Fechar menu");
+  };
+
+  const toggleMenu = () => {
+    if (!header?.classList.contains("menu-open")) {
+      openMenu();
+      return;
+    }
+
+    closeMenu();
+  };
+
   const syncHeader = () => {
     if (!header) return;
     if (!isOverlayHeader) {
@@ -80,4 +126,18 @@ const isOverlayHeader = currentPath === "/";
 
   syncHeader();
   window.addEventListener("scroll", syncHeader, { passive: true });
+
+  menuToggle?.addEventListener("click", toggleMenu);
+  backdrop?.addEventListener("click", closeMenu);
+  navLinks.forEach((link) => link.addEventListener("click", closeMenu));
+  window.addEventListener("resize", () => {
+    if (window.innerWidth >= 768) {
+      closeMenu();
+    }
+  });
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeMenu();
+    }
+  });
 </script>
