@@ -1,0 +1,187 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const grupos = [
+  {
+    nome: "Grupo de Crianças",
+    publico: "Infância",
+    horario: "Sábados às 19h",
+    descricao:
+      "Um espaço preparado para ensinar a Palavra com linguagem adequada, cuidado e alegria, ajudando as crianças a crescerem na fé desde cedo."
+  },
+  {
+    nome: "Grupo de Jovens",
+    publico: "Juventude",
+    horario: "2ª sexta às 20h",
+    descricao:
+      "Encontros voltados ao fortalecimento espiritual, comunhão e direção bíblica para os desafios próprios dessa fase da vida."
+  },
+  {
+    nome: "Grupo de Homens",
+    publico: "Homens",
+    horario: "2º domingo às 9h",
+    descricao:
+      "Um ambiente de oração, responsabilidade cristã e encorajamento mútuo para homens que desejam servir a Deus, à família e à igreja."
+  },
+  {
+    nome: "Grupo de Mulheres",
+    publico: "Mulheres",
+    horario: "1º domingo às 14h30",
+    descricao:
+      "Momentos de comunhão, ensino e cuidado espiritual para mulheres que desejam caminhar juntas em fé, serviço e crescimento cristão."
+  },
+  {
+    nome: "Grupo de Casais",
+    publico: "Casais",
+    horario: "Consulte a igreja",
+    descricao:
+      "Encontros pensados para fortalecer o relacionamento conjugal, promover diálogo saudável e consolidar lares firmados em princípios bíblicos."
+  }
+];
+---
+
+<BaseLayout
+  title="Grupos | 5IEQ Vila Arlindo"
+  description="Conheça os grupos da 5IEQ Vila Arlindo para crianças, jovens, homens, mulheres e casais."
+>
+  <section class="site-container pb-12 pt-28 sm:pb-16 sm:pt-32">
+    <div class="page-hero">
+      <div class="grid gap-0 lg:grid-cols-[1.08fr_0.92fr]">
+        <div class="p-8 sm:p-12 lg:p-14">
+          <p class="section-kicker">Grupos da Igreja</p>
+          <h1 class="mt-4 font-serif text-5xl font-semibold leading-[0.92] tracking-[-0.04em] text-text sm:text-6xl">
+            Espaços de comunhão, cuidado e crescimento para cada fase da vida.
+          </h1>
+          <p class="mt-6 max-w-2xl section-copy">
+            A vida da igreja também acontece em encontros específicos que aproximam pessoas com
+            realidades semelhantes, fortalecendo vínculos, discipulado e convivência cristã.
+          </p>
+          <div class="eyebrow-rule"></div>
+        </div>
+
+        <div class="flex min-h-[280px] items-center bg-[#eee4d5] p-8 sm:p-12">
+          <div class="w-full rounded-[1.75rem] border border-white/60 bg-white/70 p-6 shadow-card sm:p-8">
+            <span class="icon-badge" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg-lg">
+                <path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6Zm8 0a3 3 0 1 1 0-6 3 3 0 0 1 0 6ZM3.5 19a4.5 4.5 0 0 1 9 0M11.5 19a4.5 4.5 0 0 1 9 0"></path>
+              </svg>
+            </span>
+            <p class="section-kicker">Vida em comunidade</p>
+            <h2 class="mt-4 font-serif text-4xl font-semibold leading-none text-text">
+              Cada grupo amplia o cuidado pastoral e a proximidade entre irmãos.
+            </h2>
+            <p class="mt-5 text-base leading-8 text-muted">
+              Esses encontros reforçam o acolhimento da igreja e criam oportunidades práticas para
+              oração, ensino bíblico e relacionamento saudável.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="site-container pb-12 sm:pb-16">
+    <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      {
+        grupos.map((grupo) => (
+          <article class="feature-card">
+            <span class="icon-badge" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg-lg">
+                <path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6Zm8 0a3 3 0 1 1 0-6 3 3 0 0 1 0 6ZM3.5 19a4.5 4.5 0 0 1 9 0M11.5 19a4.5 4.5 0 0 1 9 0"></path>
+              </svg>
+            </span>
+            <p class="section-kicker">{grupo.publico}</p>
+            <h2 class="mt-3 font-serif text-3xl font-semibold text-text">{grupo.nome}</h2>
+            <div class="mt-4 flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.18em] text-accent">
+              <span class="icon-badge-sm" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg">
+                  <circle cx="12" cy="12" r="8"></circle>
+                  <path d="M12 8v4l2.5 2.5"></path>
+                </svg>
+              </span>
+              <span>{grupo.horario}</span>
+            </div>
+            <p class="mt-4 text-base leading-8 text-muted">{grupo.descricao}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="site-container pb-12 sm:pb-16">
+    <div class="grid gap-6 lg:grid-cols-[1fr_1fr]">
+      <article class="section-card p-8 sm:p-10">
+        <p class="section-kicker">Propósito</p>
+        <h2 class="mt-4 font-serif text-4xl font-semibold leading-none text-text">
+          Grupos que servem pessoas, famílias e a caminhada cristã da comunidade.
+        </h2>
+        <div class="mt-6 space-y-5 text-base leading-8 text-muted">
+          <p>
+            Os grupos da igreja ajudam a criar uma rotina mais próxima entre os membros, com espaço
+            para escuta, ensino e fortalecimento espiritual.
+          </p>
+          <p>
+            Cada frente atende uma necessidade específica da comunidade local, sem perder a unidade
+            da igreja como corpo, família e lugar de serviço cristão.
+          </p>
+        </div>
+      </article>
+
+      <article class="section-card p-8 sm:p-10">
+        <p class="section-kicker">Participação</p>
+        <div class="mt-6 grid gap-4">
+          <div class="info-item">
+            <div class="icon-card-row">
+              <span class="icon-badge-sm" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg">
+                  <path d="M12 12a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z"></path>
+                  <path d="M5 19a7 7 0 0 1 14 0"></path>
+                </svg>
+              </span>
+              <div>
+                <h3 class="font-serif text-2xl font-semibold text-text">Quem pode participar?</h3>
+                <p class="mt-2 text-base leading-7 text-muted">
+                  Os grupos são organizados para públicos específicos, mas todos são recebidos com
+                  atenção e orientação sobre o encontro mais adequado.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="icon-card-row">
+              <span class="icon-badge-sm" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg">
+                  <circle cx="12" cy="12" r="8"></circle>
+                  <path d="M12 8v4l2.5 2.5"></path>
+                </svg>
+              </span>
+              <div>
+                <h3 class="font-serif text-2xl font-semibold text-text">Como saber os horários?</h3>
+                <p class="mt-2 text-base leading-7 text-muted">
+                  A programação pode ser acompanhada nos canais oficiais e também na página de
+                  localização do site.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="bg-[#3a2f26] py-16 text-white sm:py-20">
+    <div class="site-container text-center">
+      <p class="text-xs font-semibold uppercase tracking-[0.28em] text-amber-200/70">Participe</p>
+      <h2 class="mt-4 font-serif text-4xl font-semibold leading-none sm:text-5xl">
+        Encontre o grupo que acompanha a sua fase de vida.
+      </h2>
+      <p class="mx-auto mt-5 max-w-2xl text-lg leading-8 text-stone-300">
+        Se você deseja visitar a igreja e conhecer melhor os encontros da comunidade, veja a
+        localização e a programação pública.
+      </p>
+      <div class="mt-10">
+        <a href="/localizacao" class="button-primary">Ver localização e horários</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
