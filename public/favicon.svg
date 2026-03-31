@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title>Cruz da 5IEQ Vila Arlindo</title>
+  <rect width="64" height="64" rx="16" fill="#f9f6ef" />
+  <path
+    d="M28 12c0-1.105.895-2 2-2h4c1.105 0 2 .895 2 2v14h14c1.105 0 2 .895 2 2v4c0 1.105-.895 2-2 2H36v18c0 1.105-.895 2-2 2h-4c-1.105 0-2-.895-2-2V34H14c-1.105 0-2-.895-2-2v-4c0-1.105.895-2 2-2h14V12Z"
+    fill="#a77435"
+  />
+  <path
+    d="M32 10v44"
+    stroke="#bd4037"
+    stroke-width="2.5"
+    stroke-linecap="round"
+    opacity="0.45"
+  />
+</svg>
