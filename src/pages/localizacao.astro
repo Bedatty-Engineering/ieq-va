@@ -6,10 +6,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   title="Localização | 5IEQ Vila Arlindo"
   description="Veja a referência de localização e a programação da Igreja Quadrangular Vila Arlindo."
 >
-  <section class="site-container pb-12 pt-28 sm:pb-16 sm:pt-32">
-    <div class="page-hero p-8 text-center sm:p-12">
+  <section class="site-container pb-10 pt-24 sm:pb-16 sm:pt-32">
+    <div class="page-hero p-6 text-center sm:p-12">
       <p class="section-kicker">Localização e Horários</p>
-      <h1 class="mt-4 font-serif text-5xl font-semibold leading-[0.92] tracking-[-0.04em] text-text sm:text-6xl">
+      <h1 class="mt-4 font-serif text-4xl font-semibold leading-[0.95] tracking-[-0.04em] text-text sm:text-6xl">
         Venha nos visitar. Estamos de portas abertas para receber você.
       </h1>
       <p class="mx-auto mt-6 max-w-3xl section-copy">
@@ -21,41 +21,77 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
   <section class="site-container pb-12 sm:pb-16">
     <div class="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
-      <div class="section-card overflow-hidden">
+      <div class="section-card min-h-[320px] overflow-hidden sm:min-h-[480px]">
         <iframe
           title="Mapa da 5ª Igreja do Evangelho Quadrangular de Vila Arlindo"
-          src="https://www.google.com/maps?q=-29.6458463,-52.2960489&z=17&output=embed"
+          src="https://maps.google.com/maps?q=-29.6458463,-52.2960489&t=k&z=17&ie=UTF8&iwloc=&output=embed"
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
-          class="min-h-[480px] w-full border-0"
+          class="block h-full min-h-[320px] w-full border-0 sm:min-h-[480px]"
         ></iframe>
       </div>
 
-      <article class="section-card p-8 sm:p-10">
+      <article class="section-card p-6 sm:p-10">
+        <span class="icon-badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg-lg">
+            <path d="M12 21s6-5.13 6-10a6 6 0 1 0-12 0c0 4.87 6 10 6 10Z"></path>
+            <circle cx="12" cy="11" r="2.5"></circle>
+          </svg>
+        </span>
         <p class="section-kicker">Informações</p>
-        <h2 class="mt-4 font-serif text-4xl font-semibold leading-none text-text">Como chegar e quando participar</h2>
+        <h2 class="mt-4 font-serif text-3xl font-semibold leading-none text-text sm:text-4xl">Como chegar e quando participar</h2>
 
         <div class="mt-8 space-y-4">
           <div class="info-item">
-            <p class="section-kicker">Endereço</p>
-            <address class="mt-2 not-italic text-base leading-7 text-muted">
-              5ª Igreja do Evangelho Quadrangular de Vila Arlindo<br />
-              Vila Arlindo<br />
-              Venâncio Aires - RS
-            </address>
+            <div class="icon-card-row">
+              <span class="icon-badge-sm" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg">
+                  <path d="M12 21s6-5.13 6-10a6 6 0 1 0-12 0c0 4.87 6 10 6 10Z"></path>
+                  <circle cx="12" cy="11" r="2.5"></circle>
+                </svg>
+              </span>
+              <div>
+                <p class="section-kicker">Endereço</p>
+                <address class="mt-2 not-italic text-base leading-7 text-muted">
+                  5ª Igreja do Evangelho Quadrangular de Vila Arlindo<br />
+                  Vila Arlindo<br />
+                  Venâncio Aires - RS
+                </address>
+              </div>
+            </div>
           </div>
 
           <div class="info-item">
-            <p class="section-kicker">Coordenadas</p>
-            <p class="mt-2 text-base leading-7 text-muted">-29.6458463, -52.2960489</p>
+            <div class="icon-card-row">
+              <span class="icon-badge-sm" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg">
+                  <path d="M12 3v18M3 12h18"></path>
+                  <circle cx="12" cy="12" r="7.5"></circle>
+                </svg>
+              </span>
+              <div>
+                <p class="section-kicker">Coordenadas</p>
+                <p class="mt-2 text-base leading-7 text-muted">-29.6458463, -52.2960489</p>
+              </div>
+            </div>
           </div>
 
           <div class="info-item">
-            <p class="section-kicker">Como chegar</p>
-            <p class="mt-2 text-base leading-7 text-muted">
-              Use o botão abaixo para abrir a rota diretamente no Google Maps com o ponto já
-              confirmado da igreja.
-            </p>
+            <div class="icon-card-row">
+              <span class="icon-badge-sm" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg">
+                  <path d="m4 18 5.5-12 5 8 5.5-8"></path>
+                  <path d="M17 6h3v3"></path>
+                </svg>
+              </span>
+              <div>
+                <p class="section-kicker">Como chegar</p>
+                <p class="mt-2 text-base leading-7 text-muted">
+                  Use o botão abaixo para abrir a rota diretamente no Google Maps com o ponto já
+                  confirmado da igreja.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -63,7 +99,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           href="https://www.google.com/maps/place/5%C2%AA+Igreja+do+Evangelho+Quadrangular+de+Vila+Arlindo/@-29.6458416,-52.2986292,17z/data=!3m1!4b1!4m6!3m5!1s0x951c971cdc06b81d:0xbd292610bdb25035!8m2!3d-29.6458463!4d-52.2960489!16s%2Fg%2F11vhtm1f9m"
           target="_blank"
           rel="noreferrer"
-          class="mt-8 inline-flex rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#8e5e24]"
+          class="mt-8 inline-flex w-full justify-center rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#8e5e24] sm:w-auto"
         >
           Abrir rota no Google Maps
         </a>
@@ -71,34 +107,84 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </div>
   </section>
 
-  <section class="site-container pb-12 sm:pb-16">
+  <section class="site-container pb-10 sm:pb-16">
     <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
       <article class="feature-card">
+        <span class="icon-badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg-lg">
+            <circle cx="12" cy="12" r="8"></circle>
+            <path d="M12 8v4l2.5 2.5"></path>
+          </svg>
+        </span>
         <p class="section-kicker">Domingo</p>
         <h2 class="mt-3 font-serif text-3xl font-semibold text-text">1º domingo · 14h30</h2>
         <p class="mt-3 text-base leading-7 text-muted">Encontro de mulheres.</p>
       </article>
       <article class="feature-card">
+        <span class="icon-badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg-lg">
+            <circle cx="12" cy="12" r="8"></circle>
+            <path d="M12 8v4l2.5 2.5"></path>
+          </svg>
+        </span>
         <p class="section-kicker">Domingo</p>
         <h2 class="mt-3 font-serif text-3xl font-semibold text-text">2º domingo · 9h</h2>
         <p class="mt-3 text-base leading-7 text-muted">Encontro de homens.</p>
       </article>
       <article class="feature-card">
+        <span class="icon-badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg-lg">
+            <circle cx="12" cy="12" r="8"></circle>
+            <path d="M12 8v4l2.5 2.5"></path>
+          </svg>
+        </span>
         <p class="section-kicker">Quarta-feira</p>
         <h2 class="mt-3 font-serif text-3xl font-semibold text-text">19h</h2>
         <p class="mt-3 text-base leading-7 text-muted">Culto de oração.</p>
       </article>
       <article class="feature-card">
+        <span class="icon-badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg-lg">
+            <circle cx="12" cy="12" r="8"></circle>
+            <path d="M12 8v4l2.5 2.5"></path>
+          </svg>
+        </span>
         <p class="section-kicker">2ª sexta</p>
         <h2 class="mt-3 font-serif text-3xl font-semibold text-text">20h</h2>
         <p class="mt-3 text-base leading-7 text-muted">Encontro de jovens.</p>
       </article>
       <article class="feature-card">
+        <span class="icon-badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg-lg">
+            <circle cx="12" cy="12" r="8"></circle>
+            <path d="M12 8v4l2.5 2.5"></path>
+          </svg>
+        </span>
         <p class="section-kicker">Sábado</p>
         <h2 class="mt-3 font-serif text-3xl font-semibold text-text">19h</h2>
         <p class="mt-3 text-base leading-7 text-muted">Culto da família.</p>
       </article>
       <article class="feature-card">
+        <span class="icon-badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg-lg">
+            <circle cx="12" cy="12" r="8"></circle>
+            <path d="M12 8v4l2.5 2.5"></path>
+          </svg>
+        </span>
+        <p class="section-kicker">Sábado</p>
+        <h2 class="mt-3 font-serif text-3xl font-semibold text-text">19h</h2>
+        <p class="mt-3 text-base leading-7 text-muted">Encontro de crianças.</p>
+      </article>
+      <article class="feature-card">
+        <span class="icon-badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg-lg">
+            <path d="M7 17.5A4.5 4.5 0 0 1 11.5 13H16"></path>
+            <path d="M16.5 6.5A2.5 2.5 0 1 1 14 9a2.5 2.5 0 0 1 2.5-2.5Z"></path>
+            <path d="M6.5 6.5h5"></path>
+            <path d="M6.5 10h4"></path>
+            <path d="M16 15.5h.01"></path>
+          </svg>
+        </span>
         <p class="section-kicker">Instagram</p>
         <h2 class="mt-3 font-serif text-3xl font-semibold text-text">@5ieq.vilaarlindo</h2>
         <p class="mt-3 text-base leading-7 text-muted">Acompanhe a programação e os avisos públicos.</p>
@@ -106,9 +192,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </div>
   </section>
 
-  <section class="site-container pb-16 sm:pb-20">
+  <section class="site-container pb-14 sm:pb-20">
     <div class="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-      <article class="section-card p-8 sm:p-10">
+      <article class="section-card p-6 sm:p-10">
         <p class="section-kicker">Perguntas Frequentes</p>
         <div class="mt-6 space-y-4">
           <div class="info-item">

@@ -6,8 +6,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   title="5IEQ Vila Arlindo | Igreja Quadrangular"
   description="Página inicial da Igreja Quadrangular Vila Arlindo, no interior de Venâncio Aires."
 >
-  <section class="pb-10 pt-0 sm:pb-14">
-    <div id="home-hero" class="hero-frame hero-frame-full min-h-[720px]">
+  <section class="pb-8 pt-0 sm:pb-14">
+    <div id="home-hero" class="hero-frame hero-frame-full home-hero">
       <div class="absolute inset-0">
         <img
           src="/images/vila-arlindo.jpeg"
@@ -17,16 +17,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         <div class="absolute inset-0 bg-gradient-to-b from-stone-950/50 via-stone-950/35 to-stone-950/80"></div>
       </div>
 
-      <div class="site-container relative z-10 flex min-h-[720px] items-center justify-center px-4 pt-28 sm:px-6 sm:pt-32 lg:px-8 lg:pt-36">
+      <div class="site-container home-hero-content relative z-10 flex items-center justify-center px-4 sm:px-6 lg:px-8">
         <div class="flex max-w-5xl flex-col items-center text-center">
           <h1
-            class="max-w-4xl font-serif text-6xl font-semibold leading-[1.08] tracking-normal text-white sm:text-7xl lg:max-w-5xl lg:text-8xl"
+            class="max-w-4xl text-balance font-serif text-4xl font-semibold leading-[0.98] tracking-normal text-white sm:text-6xl lg:max-w-5xl lg:text-8xl"
           >
             Igreja de Vila Arlindo
           </h1>
-          <div class="mt-16 flex flex-col items-center justify-center gap-4 sm:mt-20 sm:flex-row">
-            <a href="/sobre" class="button-primary min-w-[220px]">Conheça nossa história</a>
-            <a href="/localizacao" class="button-secondary min-w-[220px] border-white/25 bg-white/10 text-white hover:bg-white/20 hover:text-white">
+          <div class="mt-10 flex w-full flex-col items-center justify-center gap-4 sm:mt-20 sm:flex-row">
+            <a href="/sobre" class="button-primary w-full max-w-[22rem] sm:min-w-[220px] sm:w-auto">Conheça nossa história</a>
+            <a href="/localizacao" class="button-secondary w-full max-w-[22rem] border-white/25 bg-white/10 text-white hover:bg-white/20 hover:text-white sm:min-w-[220px] sm:w-auto">
               Planeje sua visita
             </a>
           </div>
@@ -35,24 +35,37 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </div>
   </section>
 
-  <section class="site-container pb-12 sm:pb-16">
+  <section class="site-container pb-10 sm:pb-16">
     <div class="grid gap-6 md:grid-cols-3">
       <article class="feature-card text-center">
-        <span class="feature-icon">A</span>
+        <span class="feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg-lg">
+            <path d="M12 21s-6.5-4.35-8.5-8.18C1.85 9.7 3.56 6 7.38 6c1.98 0 3.25 1.05 4.12 2.28C12.37 7.05 13.64 6 15.62 6c3.82 0 5.53 3.7 3.88 6.82C18.5 16.65 12 21 12 21Z"></path>
+          </svg>
+        </span>
         <h2 class="font-serif text-3xl font-semibold text-text">Amor</h2>
         <p class="mt-3 text-base leading-7 text-muted">
           Recebemos pessoas com atenção, escuta e cuidado, valorizando cada família que chega.
         </p>
       </article>
       <article class="feature-card text-center">
-        <span class="feature-icon">C</span>
+        <span class="feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg-lg">
+            <path d="M7 11.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm10 0a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7ZM2.5 19a4.5 4.5 0 0 1 9 0M12.5 19a4.5 4.5 0 0 1 9 0"></path>
+          </svg>
+        </span>
         <h2 class="font-serif text-3xl font-semibold text-text">Comunhão</h2>
         <p class="mt-3 text-base leading-7 text-muted">
           Fortalecemos vínculos locais por meio de encontros de oração, culto e convivência cristã.
         </p>
       </article>
       <article class="feature-card text-center">
-        <span class="feature-icon">P</span>
+        <span class="feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg-lg">
+            <path d="M6 4.5h9.5A2.5 2.5 0 0 1 18 7v12.5H8.5A2.5 2.5 0 0 0 6 22V4.5Zm0 0v15"></path>
+            <path d="M9.5 8.5h5M9.5 12h5M9.5 15.5h3.5"></path>
+          </svg>
+        </span>
         <h2 class="font-serif text-3xl font-semibold text-text">Palavra</h2>
         <p class="mt-3 text-base leading-7 text-muted">
           Mantemos a mensagem bíblica no centro da vida da igreja, com clareza e simplicidade.
@@ -61,9 +74,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </div>
   </section>
 
-  <section class="site-container pb-12 sm:pb-16">
+  <section class="site-container pb-10 sm:pb-16">
     <div class="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
-      <article class="section-card p-8 sm:p-10 lg:p-12">
+      <article class="section-card p-6 sm:p-10 lg:p-12">
         <p class="section-kicker">Quem Somos</p>
         <h2 class="mt-4 section-heading">Uma igreja local com identidade institucional e acolhimento real.</h2>
         <p class="mt-6 max-w-3xl section-copy">
@@ -74,16 +87,35 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         <div class="eyebrow-rule"></div>
         <div class="mt-8 grid gap-4 sm:grid-cols-2">
           <div class="info-item">
-            <p class="section-kicker">Culto e oração</p>
-            <p class="mt-2 text-base leading-7 text-muted">
-              Reuniões regulares para adoração, intercessão e fortalecimento espiritual.
-            </p>
+            <div class="icon-card-row">
+              <span class="icon-badge-sm" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg">
+                  <path d="M12 3c-1.9 2.5-4 5.24-4 8.22A4 4 0 0 0 12 15.2a4 4 0 0 0 4-3.98C16 8.24 13.9 5.5 12 3Z"></path>
+                  <path d="M7.5 15.5A4.5 4.5 0 0 0 12 20a4.5 4.5 0 0 0 4.5-4.5"></path>
+                </svg>
+              </span>
+              <div>
+                <p class="section-kicker">Culto e oração</p>
+                <p class="mt-2 text-base leading-7 text-muted">
+                  Reuniões regulares para adoração, intercessão e fortalecimento espiritual.
+                </p>
+              </div>
+            </div>
           </div>
           <div class="info-item">
-            <p class="section-kicker">Vida em comunidade</p>
-            <p class="mt-2 text-base leading-7 text-muted">
-              Encontros que aproximam pessoas e reforçam o cuidado mútuo dentro da igreja local.
-            </p>
+            <div class="icon-card-row">
+              <span class="icon-badge-sm" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg">
+                  <path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6Zm8 0a3 3 0 1 1 0-6 3 3 0 0 1 0 6ZM3.5 19a4.5 4.5 0 0 1 9 0M11.5 19a4.5 4.5 0 0 1 9 0"></path>
+                </svg>
+              </span>
+              <div>
+                <p class="section-kicker">Vida em comunidade</p>
+                <p class="mt-2 text-base leading-7 text-muted">
+                  Encontros que aproximam pessoas e reforçam o cuidado mútuo dentro da igreja local.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </article>
@@ -94,9 +126,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           alt="Vista da igreja em Vila Arlindo"
           class="h-64 w-full object-cover object-[58%_center] sm:h-72"
         />
-        <div class="p-8 sm:p-10">
+        <div class="p-6 sm:p-10">
           <p class="section-kicker">Visite-nos</p>
-          <h2 class="mt-4 font-serif text-4xl font-semibold leading-none text-text">
+          <h2 class="mt-4 font-serif text-3xl font-semibold leading-none text-text sm:text-4xl">
             Portas abertas para receber você e sua família.
           </h2>
           <p class="mt-5 text-base leading-8 text-muted">
@@ -110,44 +142,76 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </div>
   </section>
 
-  <section class="site-container pb-12 sm:pb-16">
+  <section class="site-container pb-10 sm:pb-16">
     <div class="grid gap-6 md:grid-cols-2">
-      <article class="media-block overflow-hidden">
-        <img
-          src="/images/image.png"
-          alt="Ambiente da igreja"
-          class="h-64 w-full object-cover sm:h-80"
-        />
-        <div class="p-8">
-          <p class="section-kicker">Encontros</p>
-          <h2 class="mt-4 font-serif text-4xl font-semibold leading-none text-text">Programação regular da comunidade</h2>
+      <article class="section-card p-6 sm:p-10">
+        <span class="icon-badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg-lg">
+            <path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6Zm8 0a3 3 0 1 1 0-6 3 3 0 0 1 0 6ZM3.5 19a4.5 4.5 0 0 1 9 0M11.5 19a4.5 4.5 0 0 1 9 0"></path>
+          </svg>
+        </span>
+        <div class="mt-6">
+          <p class="section-kicker">Grupos e encontros</p>
+          <h2 class="mt-4 font-serif text-3xl font-semibold leading-none text-text sm:text-4xl">Acompanhe a vida da igreja sem repetir informação.</h2>
           <p class="mt-4 text-base leading-8 text-muted">
-            A agenda da igreja é marcada por encontros de oração, jovens, família e reuniões específicas ao longo do mês.
+            Os grupos da comunidade e os horários públicos estão organizados em páginas próprias, facilitando a consulta de forma mais direta.
           </p>
-          <a href="/localizacao" class="mt-6 inline-flex text-sm font-semibold text-accent hover:text-text">
-            Ver horários
-          </a>
+          <div class="mt-6 flex flex-col gap-3 sm:flex-row">
+            <a href="/grupos" class="inline-flex text-sm font-semibold text-accent hover:text-text">
+              Ver grupos
+            </a>
+            <a href="/localizacao" class="inline-flex text-sm font-semibold text-accent hover:text-text">
+              Ver horários
+            </a>
+          </div>
         </div>
       </article>
 
-      <article class="section-card p-8 sm:p-10">
+      <article class="section-card p-6 sm:p-10">
         <p class="section-kicker">Agenda</p>
-        <h2 class="mt-4 font-serif text-4xl font-semibold leading-none text-text">Momentos públicos da semana e do mês</h2>
-        <div class="mt-8 space-y-4">
-          <div class="stat-card">
-            <p class="section-kicker">Quarta-feira</p>
-            <p class="mt-2 text-3xl font-semibold text-text">19h</p>
-            <p class="mt-2 text-sm leading-7 text-muted">Culto de oração</p>
+        <h2 class="mt-4 font-serif text-3xl font-semibold leading-none text-text sm:text-4xl">Momentos públicos da semana e do mês</h2>
+        <div class="mt-8 grid gap-4">
+          <div class="info-item">
+            <div class="icon-card-row">
+              <span class="icon-badge-sm" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg">
+                  <circle cx="12" cy="12" r="8"></circle>
+                  <path d="M12 8v4l2.5 2.5"></path>
+                </svg>
+              </span>
+              <div>
+                <p class="section-kicker">Quarta-feira</p>
+                <p class="mt-2 text-base leading-7 text-muted">19h · Culto de oração</p>
+              </div>
+            </div>
           </div>
-          <div class="stat-card">
-            <p class="section-kicker">2ª sexta</p>
-            <p class="mt-2 text-3xl font-semibold text-text">20h</p>
-            <p class="mt-2 text-sm leading-7 text-muted">Encontro de jovens</p>
+          <div class="info-item">
+            <div class="icon-card-row">
+              <span class="icon-badge-sm" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg">
+                  <circle cx="12" cy="12" r="8"></circle>
+                  <path d="M12 8v4l2.5 2.5"></path>
+                </svg>
+              </span>
+              <div>
+                <p class="section-kicker">2ª sexta</p>
+                <p class="mt-2 text-base leading-7 text-muted">20h · Encontro de jovens</p>
+              </div>
+            </div>
           </div>
-          <div class="stat-card">
-            <p class="section-kicker">Sábado</p>
-            <p class="mt-2 text-3xl font-semibold text-text">19h</p>
-            <p class="mt-2 text-sm leading-7 text-muted">Culto da família</p>
+          <div class="info-item">
+            <div class="icon-card-row">
+              <span class="icon-badge-sm" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg">
+                  <circle cx="12" cy="12" r="8"></circle>
+                  <path d="M12 8v4l2.5 2.5"></path>
+                </svg>
+              </span>
+              <div>
+                <p class="section-kicker">Sábado</p>
+                <p class="mt-2 text-base leading-7 text-muted">19h · Culto da família e crianças</p>
+              </div>
+            </div>
           </div>
         </div>
       </article>
@@ -157,13 +221,13 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   <section class="bg-[#3a2f26] py-16 text-white sm:py-20">
     <div class="site-container text-center">
       <p class="text-xs font-semibold uppercase tracking-[0.28em] text-amber-200/70">Venha nos visitar</p>
-      <h2 class="mt-4 font-serif text-4xl font-semibold leading-none sm:text-5xl">Esperamos você em Vila Arlindo</h2>
+      <h2 class="mt-4 font-serif text-3xl font-semibold leading-none sm:text-5xl">Esperamos você em Vila Arlindo</h2>
       <p class="mx-auto mt-5 max-w-2xl text-lg leading-8 text-stone-300">
         Será um prazer receber sua visita e apresentar a rotina da igreja, sua localização e seus encontros públicos.
       </p>
-      <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-        <a href="/localizacao" class="button-primary min-w-[220px]">Ver localização completa</a>
-        <a href="https://www.google.com/maps/place/5%C2%AA+Igreja+do+Evangelho+Quadrangular+de+Vila+Arlindo/@-29.6458416,-52.2986292,17z/data=!3m1!4b1!4m6!3m5!1s0x951c971cdc06b81d:0xbd292610bdb25035!8m2!3d-29.6458463!4d-52.2960489!16s%2Fg%2F11vhtm1f9m" target="_blank" rel="noreferrer" class="button-secondary min-w-[220px] border-white/15 bg-white/10 text-white hover:bg-white/18 hover:text-white">
+      <div class="mt-10 flex w-full flex-col items-center justify-center gap-4 sm:flex-row">
+        <a href="/localizacao" class="button-primary w-full max-w-[22rem] sm:min-w-[220px] sm:w-auto">Ver localização completa</a>
+        <a href="https://www.google.com/maps/place/5%C2%AA+Igreja+do+Evangelho+Quadrangular+de+Vila+Arlindo/@-29.6458416,-52.2986292,17z/data=!3m1!4b1!4m6!3m5!1s0x951c971cdc06b81d:0xbd292610bdb25035!8m2!3d-29.6458463!4d-52.2960489!16s%2Fg%2F11vhtm1f9m" target="_blank" rel="noreferrer" class="button-secondary w-full max-w-[22rem] border-white/15 bg-white/10 text-white hover:bg-white/18 hover:text-white sm:min-w-[220px] sm:w-auto">
           Abrir no Google Maps
         </a>
       </div>
