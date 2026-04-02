@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { Heart, Users, Notebook, Flame, Clock } from "@lucide/astro";
 ---
 
 <BaseLayout
@@ -39,9 +40,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <div class="grid gap-6 md:grid-cols-3">
       <article class="feature-card text-center">
         <span class="feature-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg-lg">
-            <path d="M12 21s-6.5-4.35-8.5-8.18C1.85 9.7 3.56 6 7.38 6c1.98 0 3.25 1.05 4.12 2.28C12.37 7.05 13.64 6 15.62 6c3.82 0 5.53 3.7 3.88 6.82C18.5 16.65 12 21 12 21Z"></path>
-          </svg>
+          <Heart class="icon-svg-lg" stroke-width={1.9} />
         </span>
         <h2 class="font-serif text-3xl font-semibold text-text">Amor</h2>
         <p class="mt-3 text-base leading-7 text-muted">
@@ -50,9 +49,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </article>
       <article class="feature-card text-center">
         <span class="feature-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg-lg">
-            <path d="M7 11.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm10 0a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7ZM2.5 19a4.5 4.5 0 0 1 9 0M12.5 19a4.5 4.5 0 0 1 9 0"></path>
-          </svg>
+          <Users class="icon-svg-lg" stroke-width={1.9} />
         </span>
         <h2 class="font-serif text-3xl font-semibold text-text">Comunhão</h2>
         <p class="mt-3 text-base leading-7 text-muted">
@@ -61,10 +58,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </article>
       <article class="feature-card text-center">
         <span class="feature-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg-lg">
-            <path d="M6 4.5h9.5A2.5 2.5 0 0 1 18 7v12.5H8.5A2.5 2.5 0 0 0 6 22V4.5Zm0 0v15"></path>
-            <path d="M9.5 8.5h5M9.5 12h5M9.5 15.5h3.5"></path>
-          </svg>
+          <Notebook class="icon-svg-lg" stroke-width={1.9} />
         </span>
         <h2 class="font-serif text-3xl font-semibold text-text">Palavra</h2>
         <p class="mt-3 text-base leading-7 text-muted">
@@ -89,10 +83,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <div class="info-item">
             <div class="icon-card-row">
               <span class="icon-badge-sm" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg">
-                  <path d="M12 3c-1.9 2.5-4 5.24-4 8.22A4 4 0 0 0 12 15.2a4 4 0 0 0 4-3.98C16 8.24 13.9 5.5 12 3Z"></path>
-                  <path d="M7.5 15.5A4.5 4.5 0 0 0 12 20a4.5 4.5 0 0 0 4.5-4.5"></path>
-                </svg>
+                <Flame class="icon-svg" stroke-width={1.9} />
               </span>
               <div>
                 <p class="section-kicker">Culto e oração</p>
@@ -105,9 +96,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <div class="info-item">
             <div class="icon-card-row">
               <span class="icon-badge-sm" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg">
-                  <path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6Zm8 0a3 3 0 1 1 0-6 3 3 0 0 1 0 6ZM3.5 19a4.5 4.5 0 0 1 9 0M11.5 19a4.5 4.5 0 0 1 9 0"></path>
-                </svg>
+                <Users class="icon-svg" stroke-width={1.9} />
               </span>
               <div>
                 <p class="section-kicker">Vida em comunidade</p>
@@ -146,9 +135,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <div class="grid gap-6 md:grid-cols-2">
       <article class="section-card p-6 sm:p-10">
         <span class="icon-badge" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg-lg">
-            <path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6Zm8 0a3 3 0 1 1 0-6 3 3 0 0 1 0 6ZM3.5 19a4.5 4.5 0 0 1 9 0M11.5 19a4.5 4.5 0 0 1 9 0"></path>
-          </svg>
+          <Users class="icon-svg-lg" stroke-width={1.9} />
         </span>
         <div class="mt-6">
           <p class="section-kicker">Grupos e encontros</p>
@@ -174,10 +161,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <div class="info-item">
             <div class="icon-card-row">
               <span class="icon-badge-sm" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg">
-                  <circle cx="12" cy="12" r="8"></circle>
-                  <path d="M12 8v4l2.5 2.5"></path>
-                </svg>
+                <Clock class="icon-svg" stroke-width={1.9} />
               </span>
               <div>
                 <p class="section-kicker">Quarta-feira</p>
@@ -188,10 +172,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <div class="info-item">
             <div class="icon-card-row">
               <span class="icon-badge-sm" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg">
-                  <circle cx="12" cy="12" r="8"></circle>
-                  <path d="M12 8v4l2.5 2.5"></path>
-                </svg>
+                <Clock class="icon-svg" stroke-width={1.9} />
               </span>
               <div>
                 <p class="section-kicker">2ª sexta</p>
@@ -202,10 +183,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <div class="info-item">
             <div class="icon-card-row">
               <span class="icon-badge-sm" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg">
-                  <circle cx="12" cy="12" r="8"></circle>
-                  <path d="M12 8v4l2.5 2.5"></path>
-                </svg>
+                <Clock class="icon-svg" stroke-width={1.9} />
               </span>
               <div>
                 <p class="section-kicker">Sábado</p>
