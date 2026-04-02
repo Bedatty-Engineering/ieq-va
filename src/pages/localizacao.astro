@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { MapPin, Crosshair, Clock, Share2 } from "@lucide/astro";
 ---
 
 <BaseLayout
@@ -32,12 +33,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </div>
 
       <article class="section-card p-6 sm:p-10">
-        <span class="icon-badge" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg-lg">
-            <path d="M12 21s6-5.13 6-10a6 6 0 1 0-12 0c0 4.87 6 10 6 10Z"></path>
-            <circle cx="12" cy="11" r="2.5"></circle>
-          </svg>
-        </span>
         <p class="section-kicker">Informações</p>
         <h2 class="mt-4 font-serif text-3xl font-semibold leading-none text-text sm:text-4xl">Como chegar e quando participar</h2>
 
@@ -45,10 +40,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <div class="info-item">
             <div class="icon-card-row">
               <span class="icon-badge-sm" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg">
-                  <path d="M12 21s6-5.13 6-10a6 6 0 1 0-12 0c0 4.87 6 10 6 10Z"></path>
-                  <circle cx="12" cy="11" r="2.5"></circle>
-                </svg>
+                <MapPin class="icon-svg" stroke-width={1.9} />
               </span>
               <div>
                 <p class="section-kicker">Endereço</p>
@@ -64,25 +56,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <div class="info-item">
             <div class="icon-card-row">
               <span class="icon-badge-sm" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg">
-                  <path d="M12 3v18M3 12h18"></path>
-                  <circle cx="12" cy="12" r="7.5"></circle>
-                </svg>
-              </span>
-              <div>
-                <p class="section-kicker">Coordenadas</p>
-                <p class="mt-2 text-base leading-7 text-muted">-29.6458463, -52.2960489</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="info-item">
-            <div class="icon-card-row">
-              <span class="icon-badge-sm" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg">
-                  <path d="m4 18 5.5-12 5 8 5.5-8"></path>
-                  <path d="M17 6h3v3"></path>
-                </svg>
+                <Crosshair class="icon-svg" stroke-width={1.9} />
               </span>
               <div>
                 <p class="section-kicker">Como chegar</p>
@@ -111,10 +85,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
       <article class="feature-card">
         <span class="icon-badge" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg-lg">
-            <circle cx="12" cy="12" r="8"></circle>
-            <path d="M12 8v4l2.5 2.5"></path>
-          </svg>
+          <Clock class="icon-svg-lg" stroke-width={1.9} />
         </span>
         <p class="section-kicker">Domingo</p>
         <h2 class="mt-3 font-serif text-3xl font-semibold text-text">1º domingo · 14h30</h2>
@@ -122,10 +93,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </article>
       <article class="feature-card">
         <span class="icon-badge" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg-lg">
-            <circle cx="12" cy="12" r="8"></circle>
-            <path d="M12 8v4l2.5 2.5"></path>
-          </svg>
+          <Clock class="icon-svg-lg" stroke-width={1.9} />
         </span>
         <p class="section-kicker">Domingo</p>
         <h2 class="mt-3 font-serif text-3xl font-semibold text-text">2º domingo · 9h</h2>
@@ -133,10 +101,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </article>
       <article class="feature-card">
         <span class="icon-badge" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg-lg">
-            <circle cx="12" cy="12" r="8"></circle>
-            <path d="M12 8v4l2.5 2.5"></path>
-          </svg>
+          <Clock class="icon-svg-lg" stroke-width={1.9} />
         </span>
         <p class="section-kicker">Quarta-feira</p>
         <h2 class="mt-3 font-serif text-3xl font-semibold text-text">19h</h2>
@@ -144,10 +109,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </article>
       <article class="feature-card">
         <span class="icon-badge" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg-lg">
-            <circle cx="12" cy="12" r="8"></circle>
-            <path d="M12 8v4l2.5 2.5"></path>
-          </svg>
+          <Clock class="icon-svg-lg" stroke-width={1.9} />
         </span>
         <p class="section-kicker">2ª sexta</p>
         <h2 class="mt-3 font-serif text-3xl font-semibold text-text">20h</h2>
@@ -155,10 +117,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </article>
       <article class="feature-card">
         <span class="icon-badge" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg-lg">
-            <circle cx="12" cy="12" r="8"></circle>
-            <path d="M12 8v4l2.5 2.5"></path>
-          </svg>
+          <Clock class="icon-svg-lg" stroke-width={1.9} />
         </span>
         <p class="section-kicker">Sábado</p>
         <h2 class="mt-3 font-serif text-3xl font-semibold text-text">19h</h2>
@@ -166,10 +125,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </article>
       <article class="feature-card">
         <span class="icon-badge" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg-lg">
-            <circle cx="12" cy="12" r="8"></circle>
-            <path d="M12 8v4l2.5 2.5"></path>
-          </svg>
+          <Clock class="icon-svg-lg" stroke-width={1.9} />
         </span>
         <p class="section-kicker">Sábado</p>
         <h2 class="mt-3 font-serif text-3xl font-semibold text-text">19h</h2>
@@ -177,13 +133,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </article>
       <article class="feature-card">
         <span class="icon-badge" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg-lg">
-            <path d="M7 17.5A4.5 4.5 0 0 1 11.5 13H16"></path>
-            <path d="M16.5 6.5A2.5 2.5 0 1 1 14 9a2.5 2.5 0 0 1 2.5-2.5Z"></path>
-            <path d="M6.5 6.5h5"></path>
-            <path d="M6.5 10h4"></path>
-            <path d="M16 15.5h.01"></path>
-          </svg>
+          <Share2 class="icon-svg-lg" stroke-width={1.9} />
         </span>
         <p class="section-kicker">Instagram</p>
         <h2 class="mt-3 font-serif text-3xl font-semibold text-text">@5ieq.vilaarlindo</h2>

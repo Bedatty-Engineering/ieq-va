@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { Users, Clock, User } from "@lucide/astro";
 
 const grupos = [
   {
@@ -62,9 +63,7 @@ const grupos = [
         <div class="flex min-h-[280px] items-center bg-[#eee4d5] p-8 sm:p-12">
           <div class="w-full rounded-[1.75rem] border border-white/60 bg-white/70 p-6 shadow-card sm:p-8">
             <span class="icon-badge" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg-lg">
-                <path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6Zm8 0a3 3 0 1 1 0-6 3 3 0 0 1 0 6ZM3.5 19a4.5 4.5 0 0 1 9 0M11.5 19a4.5 4.5 0 0 1 9 0"></path>
-              </svg>
+              <Users class="icon-svg-lg" stroke-width={1.9} />
             </span>
             <p class="section-kicker">Vida em comunidade</p>
             <h2 class="mt-4 font-serif text-4xl font-semibold leading-none text-text">
@@ -86,18 +85,13 @@ const grupos = [
         grupos.map((grupo) => (
           <article class="feature-card">
             <span class="icon-badge" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg-lg">
-                <path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6Zm8 0a3 3 0 1 1 0-6 3 3 0 0 1 0 6ZM3.5 19a4.5 4.5 0 0 1 9 0M11.5 19a4.5 4.5 0 0 1 9 0"></path>
-              </svg>
+              <Users class="icon-svg-lg" stroke-width={1.9} />
             </span>
             <p class="section-kicker">{grupo.publico}</p>
             <h2 class="mt-3 font-serif text-3xl font-semibold text-text">{grupo.nome}</h2>
             <div class="mt-4 flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.18em] text-accent">
               <span class="icon-badge-sm" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg">
-                  <circle cx="12" cy="12" r="8"></circle>
-                  <path d="M12 8v4l2.5 2.5"></path>
-                </svg>
+                <Clock class="icon-svg" stroke-width={1.9} />
               </span>
               <span>{grupo.horario}</span>
             </div>
@@ -133,10 +127,7 @@ const grupos = [
           <div class="info-item">
             <div class="icon-card-row">
               <span class="icon-badge-sm" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg">
-                  <path d="M12 12a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z"></path>
-                  <path d="M5 19a7 7 0 0 1 14 0"></path>
-                </svg>
+                <User class="icon-svg" stroke-width={1.9} />
               </span>
               <div>
                 <h3 class="font-serif text-2xl font-semibold text-text">Quem pode participar?</h3>
@@ -150,10 +141,7 @@ const grupos = [
           <div class="info-item">
             <div class="icon-card-row">
               <span class="icon-badge-sm" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg">
-                  <circle cx="12" cy="12" r="8"></circle>
-                  <path d="M12 8v4l2.5 2.5"></path>
-                </svg>
+                <Clock class="icon-svg" stroke-width={1.9} />
               </span>
               <div>
                 <h3 class="font-serif text-2xl font-semibold text-text">Como saber os horários?</h3>

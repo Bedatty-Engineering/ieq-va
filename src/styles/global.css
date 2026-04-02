@@ -546,6 +546,14 @@
     display: block;
   }
 
+  .calendar-scroll {
+    @apply mt-8 overflow-x-auto pb-2;
+  }
+
+  .calendar-shell {
+    @apply min-w-full;
+  }
+
   .calendar-month-header {
     @apply flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between;
   }
@@ -555,7 +563,7 @@
   }
 
   .calendar-weekdays {
-    @apply mt-8 grid grid-cols-7 gap-2 text-center text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-muted sm:gap-3 sm:text-xs;
+    @apply grid grid-cols-7 gap-2 text-center text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-muted sm:gap-3 sm:text-xs;
   }
 
   .calendar-grid {
@@ -564,10 +572,11 @@
 
   .calendar-day-shell {
     position: relative;
+    height: 100%;
   }
 
   .calendar-day {
-    @apply min-h-[6.5rem] rounded-[1rem] border border-line bg-white/70 p-2 text-left sm:min-h-[8rem] sm:p-3;
+    @apply flex h-full w-full flex-col min-h-[6.5rem] rounded-[1rem] border border-line bg-white/70 p-2 text-left sm:min-h-[8rem] sm:p-3;
   }
 
   .calendar-day-outside {
@@ -702,6 +711,23 @@
   }
 
   @media (max-width: 767px) {
+    .calendar-toolbar {
+      align-items: stretch;
+    }
+
+    .calendar-nav {
+      justify-content: space-between;
+    }
+
+    .calendar-nav-button {
+      height: 2.75rem;
+      width: 2.75rem;
+    }
+
+    .calendar-shell {
+      min-width: 42rem;
+    }
+
     .calendar-day {
       min-height: 5.25rem;
       padding: 0.55rem;
