@@ -1,0 +1,9 @@
+---
+title: Nome do encontro
+schedule: Dia e horário
+summary: Resumo curto opcional
+published: true
+order: 0
+---
+
+Se preferir, remova o campo `summary` e escreva aqui uma descrição em Markdown.
