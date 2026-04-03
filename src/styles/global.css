@@ -456,7 +456,7 @@
   }
 
   .event-row {
-    @apply flex w-full items-center gap-4 rounded-[1.25rem] border border-line bg-white/80 px-4 py-4 text-left transition;
+    @apply relative flex w-full items-center gap-4 rounded-[1.25rem] border border-line bg-white/80 px-4 py-4 text-left transition;
   }
 
   .event-row:hover {
@@ -493,6 +493,28 @@
 
   .event-subcard {
     @apply rounded-[1rem] border border-line bg-surface px-4 py-4;
+  }
+
+  .event-subcard-highlight {
+    border-color: rgb(var(--color-line));
+    background: rgb(var(--color-surface));
+    box-shadow: none;
+  }
+
+  .event-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.2rem 0.6rem;
+    border-radius: 9999px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    background: rgb(128 39 54 / 0.14);
+    color: rgb(128 39 54);
+    border: 1px solid rgb(128 39 54 / 0.38);
+    white-space: nowrap;
+    line-height: 1.5;
   }
 
   .markdown-copy {
@@ -637,6 +659,23 @@
     box-shadow: 0 8px 20px rgb(90 63 25 / 0.1);
   }
 
+  .calendar-day-has-highlight {
+    border-color: rgb(128 39 54 / 0.85);
+    background:
+      linear-gradient(180deg, rgb(128 39 54 / 0.16), rgb(255 255 255 / 0.97)),
+      rgb(var(--color-surface));
+    box-shadow:
+      inset 0 0 0 1px rgb(128 39 54 / 0.26),
+      0 10px 22px rgb(128 39 54 / 0.12);
+  }
+
+  .calendar-day-has-highlight:hover {
+    border-color: rgb(128 39 54 / 1);
+    box-shadow:
+      inset 0 0 0 1px rgb(128 39 54 / 0.3),
+      0 12px 24px rgb(128 39 54 / 0.16);
+  }
+
   .calendar-day-has-events:active {
     transform: scale(0.96);
   }
@@ -676,6 +715,13 @@
     border-radius: 9999px;
     background: rgb(var(--color-accent));
     flex-shrink: 0;
+  }
+
+  .calendar-day-dot.calendar-day-dot-special {
+    background: rgb(128 39 54);
+    width: 7px;
+    height: 7px;
+    box-shadow: 0 0 0 3px rgb(128 39 54 / 0.18);
   }
 
   .calendar-day-popover {
