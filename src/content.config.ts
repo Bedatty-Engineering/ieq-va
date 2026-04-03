@@ -29,6 +29,7 @@ const cronograma = defineCollection({
     summary: z.string().optional(),
     allDay: z.boolean().default(false),
     published: z.boolean().default(true),
+    badge: z.string().optional(),
     recurrence: recurrenceSchema
   })
 });

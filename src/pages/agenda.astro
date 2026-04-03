@@ -12,6 +12,7 @@ interface EventEntry {
   endDate: Date;
   location?: string;
   summary?: string;
+  badge?: string;
   allDay: boolean;
   googleCalendarUrl: string;
   monthIndex: number;
@@ -22,6 +23,7 @@ interface EventEntry {
 
 interface EventGroup extends EventEntry {
   subEvents: EventEntry[];
+  highlightBadge?: string;
 }
 
 interface CalendarDay {
@@ -46,6 +48,7 @@ interface EventData {
   parentId?: string;
   location?: string;
   summary?: string;
+  badge?: string;
   allDay?: boolean;
   published?: boolean;
   recurrence?: {
@@ -284,6 +287,7 @@ const events: EventEntry[] = rawEntries
         endDate,
         location: entry.data.location,
         summary: entry.data.summary,
+        badge: entry.data.badge,
         allDay,
         googleCalendarUrl: buildGoogleCalendarUrl({
           title: entry.data.title,
@@ -317,8 +321,7 @@ for (const event of events) {
   const parentGroup = Array.from(eventGroupsMap.values()).find(
     (candidate) =>
       candidate.sourceId === event.parentSourceId &&
-      candidate.startDate.getTime() === event.startDate.getTime() &&
-      candidate.endDate.getTime() === event.endDate.getTime()
+      toDateKey(candidate.startDate) === toDateKey(event.startDate)
   );
 
   if (parentGroup) {
@@ -327,6 +330,22 @@ for (const event of events) {
   }
 
   eventGroupsMap.set(event.id, { ...event, subEvents: [] });
+}
+
+for (const group of eventGroupsMap.values()) {
+  const badgedSub = group.subEvents.find((sub) => sub.badge);
+  if (badgedSub) group.highlightBadge = badgedSub.badge;
+
+  if (group.title === "Culto da Família" && group.highlightBadge === "Santa Ceia") {
+    group.googleCalendarUrl = buildGoogleCalendarUrl({
+      title: "Culto de Santa Ceia",
+      startDate: group.startDate,
+      endDate: group.endDate,
+      location: group.location,
+      summary: group.summary,
+      allDay: group.allDay
+    });
+  }
 }
 
 const eventGroups = Array.from(eventGroupsMap.values()).sort(
@@ -440,7 +459,10 @@ const currentMonthIndex = new Date().getMonth();
                             <div class="calendar-day-shell" data-date={`${month.year}-${month.monthIndex + 1}-${day.dayNumber}`}>
                               <button
                                 type="button"
-                                class="calendar-day calendar-day-has-events"
+                                class:list={[
+                                  "calendar-day calendar-day-has-events",
+                                  day.events.some((event) => event.highlightBadge) && "calendar-day-has-highlight"
+                                ]}
                                 data-calendar-target-month={`mes-${month.monthIndex + 1}`}
                                 data-calendar-target-event={day.events[0]?.id}
                                 data-calendar-event-count={day.events.length}
@@ -448,7 +470,10 @@ const currentMonthIndex = new Date().getMonth();
                                 aria-expanded="false"
                               >
                                 <span class="calendar-day-number">{day.dayNumber}</span>
-                                <span class="calendar-day-dot" aria-hidden="true"></span>
+                                <span
+                                  class:list={["calendar-day-dot", day.events.some((e) => e.highlightBadge) && "calendar-day-dot-special"]}
+                                  aria-hidden="true"
+                                ></span>
                               </button>
 
                               {
@@ -579,7 +604,12 @@ const currentMonthIndex = new Date().getMonth();
                           <span class="mt-1 text-2xl font-semibold text-text">{event.dayLabel.split(" · ")[0]}</span>
                         </span>
                         <span class="min-w-0 flex-1">
-                          <span class="event-row-title block">{event.title}</span>
+                          <span class="flex flex-wrap items-baseline gap-2">
+                            <span class="event-row-title">{event.title}</span>
+                            {event.highlightBadge && (
+                              <span class="event-badge" aria-label={event.highlightBadge}>{event.highlightBadge}</span>
+                            )}
+                          </span>
                           <span class="event-row-meta mt-1 block">
                             {event.dayLabel} · {event.timeLabel}
                           </span>
@@ -587,8 +617,8 @@ const currentMonthIndex = new Date().getMonth();
                             event.subEvents.length > 0 && (
                               <span class="event-subcards mt-4 flex flex-col gap-3">
                                 {event.subEvents.map((subEvent) => (
-                                  <span class="event-subcard">
-                                    <span class="block font-serif text-xl font-semibold text-text">
+                                  <span class:list={["event-subcard", subEvent.badge && "event-subcard-highlight"]}>
+                                    <span class="font-serif text-xl font-semibold text-text">
                                       {subEvent.title}
                                     </span>
                                     <span class="event-row-meta mt-1 hidden sm:block">
