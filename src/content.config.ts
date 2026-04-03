@@ -33,6 +33,26 @@ const cronograma = defineCollection({
   })
 });
 
+const localizacaoProgramacao = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    schedule: z.string(),
+    summary: z.string().optional(),
+    published: z.boolean().default(true),
+    order: z.number().int().default(0)
+  })
+});
+
+const localizacaoFaq = defineCollection({
+  schema: z.object({
+    question: z.string(),
+    published: z.boolean().default(true),
+    order: z.number().int().default(0)
+  })
+});
+
 export const collections = {
-  cronograma
+  cronograma,
+  localizacaoProgramacao,
+  localizacaoFaq
 };

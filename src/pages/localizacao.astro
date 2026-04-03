@@ -1,6 +1,39 @@
 ---
+import { getCollection, render } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { MapPin, Crosshair, Clock, Share2 } from "@lucide/astro";
+import { MapPin, Navigation, Clock, ArrowUpRight } from "@lucide/astro";
+
+const programacaoEntries = (await getCollection("localizacaoProgramacao"))
+  .filter((entry) => entry.data.published)
+  .sort((left, right) => left.data.order - right.data.order);
+
+const programacao = await Promise.all(
+  programacaoEntries.map(async (entry) => {
+    const { Content } = await render(entry);
+
+    return {
+      id: entry.id,
+      ...entry.data,
+      Content
+    };
+  })
+);
+
+const faqEntries = (await getCollection("localizacaoFaq"))
+  .filter((entry) => entry.data.published)
+  .sort((left, right) => left.data.order - right.data.order);
+
+const faqItems = await Promise.all(
+  faqEntries.map(async (entry) => {
+    const { Content } = await render(entry);
+
+    return {
+      id: entry.id,
+      ...entry.data,
+      Content
+    };
+  })
+);
 ---
 
 <BaseLayout
@@ -36,7 +69,7 @@ import { MapPin, Crosshair, Clock, Share2 } from "@lucide/astro";
         <p class="section-kicker">Informações</p>
         <h2 class="mt-4 font-serif text-3xl font-semibold leading-none text-text sm:text-4xl">Como chegar e quando participar</h2>
 
-        <div class="mt-8 space-y-4">
+        <div class="mt-8 space-y-6">
           <div class="info-item">
             <div class="icon-card-row">
               <span class="icon-badge-sm" aria-hidden="true">
@@ -55,8 +88,8 @@ import { MapPin, Crosshair, Clock, Share2 } from "@lucide/astro";
 
           <div class="info-item">
             <div class="icon-card-row">
-              <span class="icon-badge-sm" aria-hidden="true">
-                <Crosshair class="icon-svg" stroke-width={1.9} />
+              <span class="icon-badge-sm shrink-0" aria-hidden="true">
+                <Navigation class="h-4 w-4" stroke-width={1.9} />
               </span>
               <div>
                 <p class="section-kicker">Como chegar</p>
@@ -82,89 +115,80 @@ import { MapPin, Crosshair, Clock, Share2 } from "@lucide/astro";
   </section>
 
   <section class="site-container pb-10 sm:pb-16">
-    <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-      <article class="feature-card">
-        <span class="icon-badge" aria-hidden="true">
-          <Clock class="icon-svg-lg" stroke-width={1.9} />
-        </span>
-        <p class="section-kicker">Domingo</p>
-        <h2 class="mt-3 font-serif text-3xl font-semibold text-text">1º domingo · 14h30</h2>
-        <p class="mt-3 text-base leading-7 text-muted">Encontro de mulheres.</p>
-      </article>
-      <article class="feature-card">
-        <span class="icon-badge" aria-hidden="true">
-          <Clock class="icon-svg-lg" stroke-width={1.9} />
-        </span>
-        <p class="section-kicker">Domingo</p>
-        <h2 class="mt-3 font-serif text-3xl font-semibold text-text">2º domingo · 9h</h2>
-        <p class="mt-3 text-base leading-7 text-muted">Encontro de homens.</p>
-      </article>
-      <article class="feature-card">
-        <span class="icon-badge" aria-hidden="true">
-          <Clock class="icon-svg-lg" stroke-width={1.9} />
-        </span>
-        <p class="section-kicker">Quarta-feira</p>
-        <h2 class="mt-3 font-serif text-3xl font-semibold text-text">19h</h2>
-        <p class="mt-3 text-base leading-7 text-muted">Culto de oração.</p>
-      </article>
-      <article class="feature-card">
-        <span class="icon-badge" aria-hidden="true">
-          <Clock class="icon-svg-lg" stroke-width={1.9} />
-        </span>
-        <p class="section-kicker">2ª sexta</p>
-        <h2 class="mt-3 font-serif text-3xl font-semibold text-text">20h</h2>
-        <p class="mt-3 text-base leading-7 text-muted">Encontro de jovens.</p>
-      </article>
-      <article class="feature-card">
-        <span class="icon-badge" aria-hidden="true">
-          <Clock class="icon-svg-lg" stroke-width={1.9} />
-        </span>
-        <p class="section-kicker">Sábado</p>
-        <h2 class="mt-3 font-serif text-3xl font-semibold text-text">19h</h2>
-        <p class="mt-3 text-base leading-7 text-muted">Culto da família.</p>
-      </article>
-      <article class="feature-card">
-        <span class="icon-badge" aria-hidden="true">
-          <Clock class="icon-svg-lg" stroke-width={1.9} />
-        </span>
-        <p class="section-kicker">Sábado</p>
-        <h2 class="mt-3 font-serif text-3xl font-semibold text-text">19h</h2>
-        <p class="mt-3 text-base leading-7 text-muted">Encontro de crianças.</p>
-      </article>
-      <article class="feature-card">
-        <span class="icon-badge" aria-hidden="true">
-          <Share2 class="icon-svg-lg" stroke-width={1.9} />
-        </span>
-        <p class="section-kicker">Instagram</p>
-        <h2 class="mt-3 font-serif text-3xl font-semibold text-text">@5ieq.vilaarlindo</h2>
-        <p class="mt-3 text-base leading-7 text-muted">Acompanhe a programação e os avisos públicos.</p>
-      </article>
+    <div class="mb-8">
+      <p class="section-kicker">Programação</p>
+      <h2 class="mt-3 font-serif text-3xl font-semibold leading-none text-text sm:text-4xl">
+        Encontros regulares ao longo da semana e do mês.
+      </h2>
     </div>
+
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {
+        programacao.map((item) => (
+          <article class="feature-card">
+            <div class="flex items-center gap-3">
+              <span class="icon-badge shrink-0" aria-hidden="true">
+                <Clock class="icon-svg-lg" stroke-width={1.9} />
+              </span>
+              <p class="section-kicker">{item.schedule}</p>
+            </div>
+            <h2 class="font-serif text-3xl font-semibold text-text">{item.title}</h2>
+            {
+              item.summary ? (
+                <p class="mt-3 text-base leading-7 text-muted">{item.summary}</p>
+              ) : (
+                <div class="mt-3 markdown-copy text-muted">
+                  <item.Content />
+                </div>
+              )
+            }
+          </article>
+        ))
+      }
+    </div>
+
+    <a
+      href="https://www.instagram.com/5ieq.vilaarlindo/"
+      target="_blank"
+      rel="noreferrer"
+      class="feature-card mt-6 flex flex-col gap-4 transition hover:border-accent/40 active:scale-[0.98] active:brightness-95 cursor-pointer md:flex-row md:items-center md:justify-between"
+    >
+      <div class="flex items-center gap-4">
+        <span class="icon-badge shrink-0" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="icon-svg-lg" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5"/>
+            <circle cx="12" cy="12" r="5"/>
+            <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/>
+          </svg>
+        </span>
+        <div>
+          <p class="section-kicker">Instagram</p>
+          <p class="mt-1 font-serif text-2xl font-semibold text-text">@5ieq.vilaarlindo</p>
+          <p class="mt-1 text-sm leading-6 text-muted">Acompanhe a programação e os avisos públicos.</p>
+        </div>
+      </div>
+      <span class="inline-flex items-center gap-1.5 rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-white transition shrink-0">
+        Visitar perfil
+        <ArrowUpRight class="h-4 w-4" stroke-width={2} />
+      </span>
+    </a>
   </section>
 
   <section class="site-container pb-14 sm:pb-20">
-    <div class="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-      <article class="section-card p-6 sm:p-10">
+    <div class="grid gap-6 md:grid-cols-[0.9fr_1.1fr]">
+      <article class="section-card p-6 md:p-10">
         <p class="section-kicker">Perguntas Frequentes</p>
         <div class="mt-6 space-y-4">
-          <div class="info-item">
-            <h3 class="font-serif text-2xl font-semibold text-text">Preciso avisar antes de ir?</h3>
-            <p class="mt-2 text-base leading-7 text-muted">
-              Não. Você pode chegar diretamente em qualquer um dos encontros públicos listados acima.
-            </p>
-          </div>
-          <div class="info-item">
-            <h3 class="font-serif text-2xl font-semibold text-text">Posso ir com minha família?</h3>
-            <p class="mt-2 text-base leading-7 text-muted">
-              Sim. A proposta da comunidade é acolher pessoas e famílias com simplicidade e respeito.
-            </p>
-          </div>
-          <div class="info-item">
-            <h3 class="font-serif text-2xl font-semibold text-text">Qual a melhor forma de encontrar o local?</h3>
-            <p class="mt-2 text-base leading-7 text-muted">
-              O caminho mais direto é abrir a rota no Google Maps usando o botão desta página.
-            </p>
-          </div>
+          {
+            faqItems.map((item) => (
+              <div class="info-item">
+                <h3 class="font-serif text-2xl font-semibold text-text">{item.question}</h3>
+                <div class="mt-2 markdown-copy text-muted">
+                  <item.Content />
+                </div>
+              </div>
+            ))
+          }
         </div>
       </article>
 
@@ -172,7 +196,7 @@ import { MapPin, Crosshair, Clock, Share2 } from "@lucide/astro";
         <img
           src="/images/vila-arlindo.jpeg"
           alt="Entrada da Igreja Quadrangular Vila Arlindo"
-          class="h-72 w-full object-cover object-[58%_center] sm:h-full"
+          class="h-72 w-full object-cover object-[58%_center] md:h-full"
         />
       </article>
     </div>

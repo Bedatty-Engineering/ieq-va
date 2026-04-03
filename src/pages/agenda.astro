@@ -399,31 +399,22 @@ const currentMonthIndex = new Date().getMonth();
 
   <section class="site-container pb-12 sm:pb-16">
     <div class="section-card p-5 sm:p-8 sm:pb-10">
-      <div class="calendar-toolbar">
-        <div>
-          <p class="section-kicker">Calendário</p>
-          <h2 class="mt-3 font-serif text-3xl font-semibold text-text sm:text-4xl">
-            Visualize os eventos no mês e navegue pelo ano.
-          </h2>
-        </div>
-        <div class="calendar-nav" aria-label="Navegação entre meses">
-          <button type="button" class="calendar-nav-button" data-calendar-prev aria-label="Mês anterior">
-            <ChevronLeft class="icon-svg" stroke-width={1.9} />
-          </button>
-          <button type="button" class="calendar-nav-button" data-calendar-next aria-label="Próximo mês">
-            <ChevronRight class="icon-svg" stroke-width={1.9} />
-          </button>
-        </div>
+      <div>
+        <p class="section-kicker">Calendário</p>
+        <h2 class="mt-3 font-serif text-3xl font-semibold text-text sm:text-4xl">
+          Visualize os eventos no mês e navegue pelo ano.
+        </h2>
       </div>
 
-      <div class="mt-8" data-calendar-root>
+      <div class="calendar-carousel-viewport" data-calendar-root>
+        <div class="calendar-track" data-calendar-track>
         {
           months.map((month) => (
             <section
-              class:list={["calendar-panel", month.monthIndex === currentMonthIndex && "is-active"]}
+              class="calendar-panel"
               data-calendar-panel
               data-month-index={month.monthIndex}
-              aria-hidden={month.monthIndex === currentMonthIndex ? "false" : "true"}
+              aria-hidden="true"
             >
               <div class="calendar-month-header">
                 <div>
@@ -446,7 +437,7 @@ const currentMonthIndex = new Date().getMonth();
                       month.days.map((day) =>
                         day.isCurrentMonth ? (
                           day.events.length > 0 ? (
-                            <div class="calendar-day-shell">
+                            <div class="calendar-day-shell" data-date={`${month.year}-${month.monthIndex + 1}-${day.dayNumber}`}>
                               <button
                                 type="button"
                                 class="calendar-day calendar-day-has-events"
@@ -457,10 +448,7 @@ const currentMonthIndex = new Date().getMonth();
                                 aria-expanded="false"
                               >
                                 <span class="calendar-day-number">{day.dayNumber}</span>
-                                <span class="calendar-day-count">
-                                  {day.events.length} evento{day.events.length > 1 ? "s" : ""}
-                                </span>
-                                <span class="calendar-day-title">{day.events[0]?.title}</span>
+                                <span class="calendar-day-dot" aria-hidden="true"></span>
                               </button>
 
                               {
@@ -485,7 +473,7 @@ const currentMonthIndex = new Date().getMonth();
                               }
                             </div>
                           ) : (
-                            <div class="calendar-day" aria-hidden="true">
+                            <div class="calendar-day" aria-hidden="true" data-date={`${month.year}-${month.monthIndex + 1}-${day.dayNumber}`}>
                               <span class="calendar-day-number">{day.dayNumber}</span>
                             </div>
                           )
@@ -502,6 +490,26 @@ const currentMonthIndex = new Date().getMonth();
             </section>
           ))
         }
+        </div>
+      </div>
+
+      <div class="calendar-controls" aria-label="Navegação entre meses">
+        <button type="button" class="calendar-nav-button" data-calendar-prev aria-label="Mês anterior">
+          <ChevronLeft class="icon-svg" stroke-width={1.9} />
+        </button>
+        <div class="calendar-dots">
+          {months.map((month, i) => (
+            <button
+              type="button"
+              class:list={["calendar-dot", i === currentMonthIndex && "is-active"]}
+              data-dot-index={i}
+              aria-label={`Ir para ${month.label}`}
+            ></button>
+          ))}
+        </div>
+        <button type="button" class="calendar-nav-button" data-calendar-next aria-label="Próximo mês">
+          <ChevronRight class="icon-svg" stroke-width={1.9} />
+        </button>
       </div>
     </div>
   </section>
@@ -583,7 +591,7 @@ const currentMonthIndex = new Date().getMonth();
                                     <span class="block font-serif text-xl font-semibold text-text">
                                       {subEvent.title}
                                     </span>
-                                    <span class="event-row-meta mt-1 block">
+                                    <span class="event-row-meta mt-1 hidden sm:block">
                                       {subEvent.summary ?? subEvent.timeLabel}
                                     </span>
                                   </span>
@@ -709,34 +717,68 @@ const currentMonthIndex = new Date().getMonth();
 
 <script is:inline>
   const calendarPanels = document.querySelectorAll("[data-calendar-panel]");
+  const calendarTrack = document.querySelector("[data-calendar-track]");
+  const calendarViewport = document.querySelector("[data-calendar-root]");
   const previousMonthButton = document.querySelector("[data-calendar-prev]");
   const nextMonthButton = document.querySelector("[data-calendar-next]");
+  const calendarDots = document.querySelectorAll("[data-dot-index]");
   const dialogs = document.querySelectorAll("[data-dialog-id]");
   const openButtons = document.querySelectorAll("[data-dialog-target]");
   const closeButtons = document.querySelectorAll("[data-dialog-close]");
   const calendarTargetButtons = document.querySelectorAll("[data-calendar-target-month]");
   const calendarPopovers = document.querySelectorAll("[data-calendar-popover]");
-  let activeMonthIndex = Array.from(calendarPanels).findIndex((panel) => panel.classList.contains("is-active"));
 
+  const totalMonths = calendarPanels.length;
+  let activeMonthIndex = Number(
+    Array.from(calendarPanels).findIndex((p) => p.getAttribute("data-month-index") === String(new Date().getMonth()))
+  );
   if (activeMonthIndex < 0) activeMonthIndex = 0;
 
   const syncCalendarPanels = () => {
-    calendarPanels.forEach((panel, index) => {
-      const isActive = index === activeMonthIndex;
-      panel.classList.toggle("is-active", isActive);
-      panel.setAttribute("aria-hidden", isActive ? "false" : "true");
+    if (calendarTrack instanceof HTMLElement) {
+      calendarTrack.style.transform = `translateX(-${activeMonthIndex * 100}%)`;
+    }
+    calendarPanels.forEach((panel, i) => {
+      panel.setAttribute("aria-hidden", i === activeMonthIndex ? "false" : "true");
     });
+    calendarDots.forEach((dot, i) => {
+      dot.classList.toggle("is-active", i === activeMonthIndex);
+    });
+    if (previousMonthButton instanceof HTMLButtonElement) {
+      previousMonthButton.disabled = activeMonthIndex === 0;
+    }
+    if (nextMonthButton instanceof HTMLButtonElement) {
+      nextMonthButton.disabled = activeMonthIndex === totalMonths - 1;
+    }
   };
 
   previousMonthButton?.addEventListener("click", () => {
-    activeMonthIndex = (activeMonthIndex - 1 + calendarPanels.length) % calendarPanels.length;
-    syncCalendarPanels();
+    if (activeMonthIndex > 0) { activeMonthIndex--; syncCalendarPanels(); }
   });
 
   nextMonthButton?.addEventListener("click", () => {
-    activeMonthIndex = (activeMonthIndex + 1) % calendarPanels.length;
-    syncCalendarPanels();
+    if (activeMonthIndex < totalMonths - 1) { activeMonthIndex++; syncCalendarPanels(); }
   });
+
+  calendarDots.forEach((dot) => {
+    dot.addEventListener("click", () => {
+      const idx = Number(dot.getAttribute("data-dot-index"));
+      if (!isNaN(idx)) { activeMonthIndex = idx; syncCalendarPanels(); }
+    });
+  });
+
+  let touchStartX = 0;
+  calendarViewport?.addEventListener("touchstart", (e) => {
+    touchStartX = e.changedTouches[0].clientX;
+  }, { passive: true });
+  calendarViewport?.addEventListener("touchend", (e) => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) {
+      if (diff > 0 && activeMonthIndex < totalMonths - 1) activeMonthIndex++;
+      else if (diff < 0 && activeMonthIndex > 0) activeMonthIndex--;
+      syncCalendarPanels();
+    }
+  }, { passive: true });
 
   const closeAllCalendarPopovers = () => {
     calendarPopovers.forEach((popover) => {
@@ -849,4 +891,11 @@ const currentMonthIndex = new Date().getMonth();
   });
 
   syncCalendarPanels();
+
+  const today = new Date();
+  const todayStr = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
+  const todayCell = document.querySelector(`[data-date="${todayStr}"]`);
+  if (todayCell instanceof HTMLElement) {
+    todayCell.classList.add("calendar-day-today");
+  }
 </script>

@@ -1,0 +1,7 @@
+---
+question: Sua pergunta aqui?
+published: true
+order: 0
+---
+
+Escreva a resposta em Markdown.
