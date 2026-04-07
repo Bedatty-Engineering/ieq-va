@@ -10,7 +10,7 @@ recurrence:
   frequency: monthlyNth
   until: "2026-12-06T14:30:00-03:00"
   interval: 1
-  nth: 1
+  nth: 3
   months: [3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 ---
 
