@@ -52,8 +52,20 @@ const localizacaoFaq = defineCollection({
   })
 });
 
+const grupos = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    audience: z.string(),
+    schedule: z.string(),
+    summary: z.string().optional(),
+    published: z.boolean().default(true),
+    order: z.number().int().default(0)
+  })
+});
+
 export const collections = {
   cronograma,
   localizacaoProgramacao,
-  localizacaoFaq
+  localizacaoFaq,
+  grupos
 };

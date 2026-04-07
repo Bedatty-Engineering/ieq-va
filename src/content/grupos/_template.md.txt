@@ -1,0 +1,10 @@
+---
+title: "Nome do grupo"
+audience: "Público"
+schedule: "Dia e horário"
+summary: "Resumo opcional do grupo."
+published: true
+order: 0
+---
+
+Conteúdo opcional em Markdown para complementar o resumo.
