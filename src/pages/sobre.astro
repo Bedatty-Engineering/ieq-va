@@ -1,33 +1,11 @@
 ---
 import Timeline from "../components/Timeline.astro";
+import {
+  aboutTimelineItems,
+  aboutValues,
+  churchInfo
+} from "../features/institucional/content/siteContent";
 import BaseLayout from "../layouts/BaseLayout.astro";
-
-const timelineItems = [
-  {
-    year: "Início",
-    title: "Primeiros encontros da comunidade",
-    description:
-      "A presença da igreja foi sendo formada por reuniões locais de culto, oração e comunhão, com participação próxima das famílias da região."
-  },
-  {
-    year: "Crescimento",
-    title: "Consolidação da vida comunitária",
-    description:
-      "Com o passar do tempo, a igreja fortaleceu sua identidade institucional e sua constância nos encontros públicos e no cuidado pastoral."
-  },
-  {
-    year: "Serviço",
-    title: "Ensino, oração e acolhimento",
-    description:
-      "A comunidade permaneceu comprometida com a Palavra, com a intercessão e com uma atuação simples, mas presente, em Vila Arlindo."
-  },
-  {
-    year: "Hoje",
-    title: "Continuidade com reverência e proximidade",
-    description:
-      "A 5IEQ Vila Arlindo segue servindo de forma acessível, preservando a comunhão local e abrindo espaço para crescimento futuro do site e da comunicação."
-  }
-];
 ---
 
 <BaseLayout
@@ -43,14 +21,13 @@ const timelineItems = [
             Nossa história e nossa missão.
           </h1>
           <p class="mt-6 max-w-2xl section-copy">
-            A Igreja Quadrangular Vila Arlindo faz parte da tradição da Igreja do Evangelho
-            Quadrangular e mantém sua atuação voltada a culto, ensino, oração e acolhimento.
+            Esta página reúne a base institucional da igreja: trajetória, missão, visão e valores.
           </p>
           <div class="eyebrow-rule"></div>
         </div>
         <div class="min-h-[280px]">
           <img
-            src="/images/vila-arlindo.jpeg"
+            src={churchInfo.imagePath}
             alt="Fachada da Igreja Quadrangular Vila Arlindo"
             class="h-full w-full object-cover object-[58%_center]"
           />
@@ -66,18 +43,15 @@ const timelineItems = [
         <h2 class="mt-4 font-serif text-4xl font-semibold leading-none text-text">Uma igreja institucional, acolhedora e presente na comunidade.</h2>
         <div class="mt-6 space-y-5 text-base leading-8 text-muted">
           <p>
-            A comunidade local foi construída com base em encontros simples, constância pastoral e
-            fidelidade à mensagem bíblica. A proposta sempre foi manter uma presença cristã visível
-            e acessível em Vila Arlindo.
+            A comunidade local foi construída com encontros simples, constância pastoral e
+            fidelidade à mensagem bíblica.
           </p>
           <p>
-            Ao longo da sua trajetória, a igreja consolidou uma rotina de culto, oração e
-            comunhão, fortalecendo vínculos entre famílias e preservando uma identidade marcada por
-            reverência, hospitalidade e serviço.
+            Ao longo do tempo, a igreja consolidou uma identidade marcada por reverência,
+            hospitalidade e serviço.
           </p>
           <p>
-            O site acompanha essa mesma direção: comunicação clara, estrutura enxuta e base pronta
-            para futuras expansões institucionais sem perder a simplicidade desta versão.
+            A linha do tempo e os valores abaixo resumem essa caminhada de forma direta.
           </p>
         </div>
       </article>
@@ -88,15 +62,14 @@ const timelineItems = [
           <div class="info-item">
             <h3 class="font-serif text-3xl font-semibold text-text">Missão</h3>
             <p class="mt-3 text-base leading-8 text-muted">
-              Servir a comunidade local anunciando o evangelho, fortalecendo famílias e promovendo
-              uma vida cristã prática por meio da Palavra e da comunhão.
+              Anunciar o evangelho, fortalecer famílias e servir a comunidade com base na Palavra.
             </p>
           </div>
           <div class="info-item">
             <h3 class="font-serif text-3xl font-semibold text-text">Visão</h3>
             <p class="mt-3 text-base leading-8 text-muted">
-              Permanecer como uma igreja conhecida por acolhimento, constância espiritual e
-              presença fiel em Vila Arlindo e arredores.
+              Permanecer como uma igreja reconhecida por acolhimento, constância espiritual e
+              presença fiel em Vila Arlindo.
             </p>
           </div>
         </div>
@@ -109,31 +82,21 @@ const timelineItems = [
       <article class="section-card p-8 sm:p-10">
         <p class="section-kicker">Nossos Valores</p>
         <div class="mt-6 space-y-4">
-          <div class="info-item">
-            <h3 class="font-serif text-2xl font-semibold text-text">Amor genuíno</h3>
-            <p class="mt-2 text-base leading-7 text-muted">
-              Recebemos pessoas com respeito, escuta e disposição para caminhar ao lado delas.
-            </p>
-          </div>
-          <div class="info-item">
-            <h3 class="font-serif text-2xl font-semibold text-text">Palavra central</h3>
-            <p class="mt-2 text-base leading-7 text-muted">
-              O ensino bíblico continua sendo referência para a vida da igreja e sua comunicação.
-            </p>
-          </div>
-          <div class="info-item">
-            <h3 class="font-serif text-2xl font-semibold text-text">Comunidade real</h3>
-            <p class="mt-2 text-base leading-7 text-muted">
-              Valorizamos vínculos autênticos, cuidado mútuo e convivência cristã cotidiana.
-            </p>
-          </div>
+          {
+            aboutValues.map((item) => (
+              <div class="info-item">
+                <h3 class="font-serif text-2xl font-semibold text-text">{item.title}</h3>
+                <p class="mt-2 text-base leading-7 text-muted">{item.description}</p>
+              </div>
+            ))
+          }
         </div>
       </article>
 
       <article class="section-card p-8 sm:p-10">
         <p class="section-kicker">Linha do Tempo</p>
         <div class="mt-6">
-          <Timeline items={timelineItems} />
+          <Timeline items={aboutTimelineItems} />
         </div>
       </article>
     </div>
@@ -144,7 +107,8 @@ const timelineItems = [
       <p class="text-xs font-semibold uppercase tracking-[0.28em] text-amber-200/70">Faça parte</p>
       <h2 class="mt-4 font-serif text-4xl font-semibold leading-none sm:text-5xl">Venha conhecer a comunidade local</h2>
       <p class="mx-auto mt-5 max-w-2xl text-lg leading-8 text-stone-300">
-        Se você deseja visitar a igreja, ver os horários públicos ou localizar o templo, a próxima etapa está na página de localização.
+        Se o próximo passo for visitar a igreja, a página de localização reúne mapa, endereço e
+        horários.
       </p>
       <div class="mt-10">
         <a href="/localizacao" class="button-primary">Ver localização e horários</a>

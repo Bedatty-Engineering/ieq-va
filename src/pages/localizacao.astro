@@ -1,39 +1,10 @@
 ---
-import { getCollection, render } from "astro:content";
-import BaseLayout from "../layouts/BaseLayout.astro";
 import { MapPin, Navigation, Clock, ArrowUpRight } from "@lucide/astro";
+import { churchInfo } from "../features/institucional/content/siteContent";
+import { getLocalizacaoPageData } from "../features/localizacao/content/getLocalizacaoPageData";
+import BaseLayout from "../layouts/BaseLayout.astro";
 
-const programacaoEntries = (await getCollection("localizacaoProgramacao"))
-  .filter((entry) => entry.data.published)
-  .sort((left, right) => left.data.order - right.data.order);
-
-const programacao = await Promise.all(
-  programacaoEntries.map(async (entry) => {
-    const { Content } = await render(entry);
-
-    return {
-      id: entry.id,
-      ...entry.data,
-      Content
-    };
-  })
-);
-
-const faqEntries = (await getCollection("localizacaoFaq"))
-  .filter((entry) => entry.data.published)
-  .sort((left, right) => left.data.order - right.data.order);
-
-const faqItems = await Promise.all(
-  faqEntries.map(async (entry) => {
-    const { Content } = await render(entry);
-
-    return {
-      id: entry.id,
-      ...entry.data,
-      Content
-    };
-  })
-);
+const { programacao, faqItems } = await getLocalizacaoPageData();
 ---
 
 <BaseLayout
@@ -47,8 +18,7 @@ const faqItems = await Promise.all(
         Venha nos visitar. Estamos de portas abertas para receber você.
       </h1>
       <p class="mx-auto mt-6 max-w-3xl section-copy">
-        Abaixo estão o ponto oficial no Google Maps, os horários públicos da igreja e um mapa para
-        facilitar a sua chegada até a 5ª Igreja do Evangelho Quadrangular de Vila Arlindo.
+        Aqui você encontra o mapa, o endereço e os horários principais para planejar sua chegada.
       </p>
     </div>
   </section>
@@ -58,7 +28,7 @@ const faqItems = await Promise.all(
       <div class="section-card min-h-[320px] overflow-hidden sm:min-h-[480px]">
         <iframe
           title="Mapa da 5ª Igreja do Evangelho Quadrangular de Vila Arlindo"
-          src="https://maps.google.com/maps?q=-29.6458463,-52.2960489&t=k&z=17&ie=UTF8&iwloc=&output=embed"
+          src={churchInfo.mapsEmbedUrl}
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
           class="block h-full min-h-[320px] w-full border-0 sm:min-h-[480px]"
@@ -78,9 +48,12 @@ const faqItems = await Promise.all(
               <div>
                 <p class="section-kicker">Endereço</p>
                 <address class="mt-2 not-italic text-base leading-7 text-muted">
-                  5ª Igreja do Evangelho Quadrangular de Vila Arlindo<br />
-                  Vila Arlindo<br />
-                  Venâncio Aires - RS
+                  {churchInfo.addressLines.map((line) => (
+                    <>
+                      {line}
+                      <br />
+                    </>
+                  ))}
                 </address>
               </div>
             </div>
@@ -94,8 +67,7 @@ const faqItems = await Promise.all(
               <div>
                 <p class="section-kicker">Como chegar</p>
                 <p class="mt-2 text-base leading-7 text-muted">
-                  Use o botão abaixo para abrir a rota diretamente no Google Maps com o ponto já
-                  confirmado da igreja.
+                  Use o botão abaixo para abrir a rota com o ponto já definido no Google Maps.
                 </p>
               </div>
             </div>
@@ -103,7 +75,7 @@ const faqItems = await Promise.all(
         </div>
 
         <a
-          href="https://www.google.com/maps/place/5%C2%AA+Igreja+do+Evangelho+Quadrangular+de+Vila+Arlindo/@-29.6458416,-52.2986292,17z/data=!3m1!4b1!4m6!3m5!1s0x951c971cdc06b81d:0xbd292610bdb25035!8m2!3d-29.6458463!4d-52.2960489!16s%2Fg%2F11vhtm1f9m"
+          href={churchInfo.mapsPlaceUrl}
           target="_blank"
           rel="noreferrer"
           class="mt-8 inline-flex w-full justify-center rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#8e5e24] sm:w-auto"
@@ -118,7 +90,7 @@ const faqItems = await Promise.all(
     <div class="mb-8">
       <p class="section-kicker">Programação</p>
       <h2 class="mt-3 font-serif text-3xl font-semibold leading-none text-text sm:text-4xl">
-        Encontros regulares ao longo da semana e do mês.
+        Consulte os horários públicos sem precisar procurar em outras páginas.
       </h2>
     </div>
 
@@ -148,10 +120,10 @@ const faqItems = await Promise.all(
     </div>
 
     <a
-      href="https://www.instagram.com/5ieq.vilaarlindo/"
+      href={churchInfo.instagramUrl}
       target="_blank"
       rel="noreferrer"
-      class="feature-card mt-6 flex flex-col gap-4 transition hover:border-accent/40 active:scale-[0.98] active:brightness-95 cursor-pointer md:flex-row md:items-center md:justify-between"
+      class="feature-card mt-6 flex cursor-pointer flex-col gap-4 transition hover:border-accent/40 active:scale-[0.98] active:brightness-95 md:flex-row md:items-center md:justify-between"
     >
       <div class="flex items-center gap-4">
         <span class="icon-badge shrink-0" aria-hidden="true">
@@ -164,10 +136,10 @@ const faqItems = await Promise.all(
         <div>
           <p class="section-kicker">Instagram</p>
           <p class="mt-1 font-serif text-2xl font-semibold text-text">@5ieq.vilaarlindo</p>
-          <p class="mt-1 text-sm leading-6 text-muted">Acompanhe a programação e os avisos públicos.</p>
+          <p class="mt-1 text-sm leading-6 text-muted">Acompanhe avisos e atualizações da igreja.</p>
         </div>
       </div>
-      <span class="inline-flex items-center gap-1.5 rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-white transition shrink-0">
+      <span class="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-white transition">
         Visitar perfil
         <ArrowUpRight class="h-4 w-4" stroke-width={2} />
       </span>
@@ -178,6 +150,9 @@ const faqItems = await Promise.all(
     <div class="grid gap-6 md:grid-cols-[0.9fr_1.1fr]">
       <article class="section-card p-6 md:p-10">
         <p class="section-kicker">Perguntas Frequentes</p>
+        <p class="mt-4 text-base leading-8 text-muted">
+          Se ainda restar alguma dúvida sobre visita ou participação, comece pelas respostas abaixo.
+        </p>
         <div class="mt-6 space-y-4">
           {
             faqItems.map((item) => (
@@ -194,7 +169,7 @@ const faqItems = await Promise.all(
 
       <article class="media-block overflow-hidden">
         <img
-          src="/images/vila-arlindo.jpeg"
+          src={churchInfo.imagePath}
           alt="Entrada da Igreja Quadrangular Vila Arlindo"
           class="h-72 w-full object-cover object-[58%_center] md:h-full"
         />

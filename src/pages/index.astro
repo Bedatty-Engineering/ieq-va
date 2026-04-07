@@ -1,6 +1,13 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
 import { Heart, Users, Notebook, Flame, Clock } from "@lucide/astro";
+import {
+  churchInfo,
+  homeAgendaHighlights,
+  homeValueCards
+} from "../features/institucional/content/siteContent";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const valueIcons = [Heart, Users, Notebook];
 ---
 
 <BaseLayout
@@ -11,7 +18,7 @@ import { Heart, Users, Notebook, Flame, Clock } from "@lucide/astro";
     <div id="home-hero" class="hero-frame hero-frame-full home-hero">
       <div class="absolute inset-0">
         <img
-          src="/images/vila-arlindo.jpeg"
+          src={churchInfo.imagePath}
           alt="Fachada da Igreja do Evangelho Quadrangular em Vila Arlindo"
           class="h-full w-full object-cover object-[58%_center]"
         />
@@ -38,33 +45,21 @@ import { Heart, Users, Notebook, Flame, Clock } from "@lucide/astro";
 
   <section class="site-container pb-10 sm:pb-16">
     <div class="grid gap-6 md:grid-cols-3">
-      <article class="feature-card text-center">
-        <span class="feature-icon" aria-hidden="true">
-          <Heart class="icon-svg-lg" stroke-width={1.9} />
-        </span>
-        <h2 class="font-serif text-3xl font-semibold text-text">Amor</h2>
-        <p class="mt-3 text-base leading-7 text-muted">
-          Recebemos pessoas com atenção, escuta e cuidado, valorizando cada família que chega.
-        </p>
-      </article>
-      <article class="feature-card text-center">
-        <span class="feature-icon" aria-hidden="true">
-          <Users class="icon-svg-lg" stroke-width={1.9} />
-        </span>
-        <h2 class="font-serif text-3xl font-semibold text-text">Comunhão</h2>
-        <p class="mt-3 text-base leading-7 text-muted">
-          Fortalecemos vínculos locais por meio de encontros de oração, culto e convivência cristã.
-        </p>
-      </article>
-      <article class="feature-card text-center">
-        <span class="feature-icon" aria-hidden="true">
-          <Notebook class="icon-svg-lg" stroke-width={1.9} />
-        </span>
-        <h2 class="font-serif text-3xl font-semibold text-text">Palavra</h2>
-        <p class="mt-3 text-base leading-7 text-muted">
-          Mantemos a mensagem bíblica no centro da vida da igreja, com clareza e simplicidade.
-        </p>
-      </article>
+      {
+        homeValueCards.map((card, index) => {
+          const Icon = valueIcons[index];
+
+          return (
+            <article class="feature-card text-center">
+              <span class="feature-icon" aria-hidden="true">
+                <Icon class="icon-svg-lg" stroke-width={1.9} />
+              </span>
+              <h2 class="font-serif text-3xl font-semibold text-text">{card.title}</h2>
+              <p class="mt-3 text-base leading-7 text-muted">{card.description}</p>
+            </article>
+          );
+        })
+      }
     </div>
   </section>
 
@@ -74,9 +69,8 @@ import { Heart, Users, Notebook, Flame, Clock } from "@lucide/astro";
         <p class="section-kicker">Quem Somos</p>
         <h2 class="mt-4 section-heading">Uma igreja local com identidade institucional e acolhimento real.</h2>
         <p class="mt-6 max-w-3xl section-copy">
-          A 5IEQ Vila Arlindo faz parte da Igreja do Evangelho Quadrangular e serve a comunidade com
-          uma presença constante, reverente e acessível. O foco continua em culto, ensino,
-          relacionamento e vida cristã prática.
+          A 5IEQ Vila Arlindo serve Vila Arlindo com presença constante, reverência e acolhimento.
+          Para conhecer melhor essa base, a página sobre reúne a história e a missão da igreja.
         </p>
         <div class="eyebrow-rule"></div>
         <div class="mt-8 grid gap-4 sm:grid-cols-2">
@@ -111,7 +105,7 @@ import { Heart, Users, Notebook, Flame, Clock } from "@lucide/astro";
 
       <aside class="section-card overflow-hidden">
         <img
-          src="/images/vila-arlindo.jpeg"
+          src={churchInfo.imagePath}
           alt="Vista da igreja em Vila Arlindo"
           class="h-64 w-full object-cover object-[58%_center] sm:h-72"
         />
@@ -121,7 +115,8 @@ import { Heart, Users, Notebook, Flame, Clock } from "@lucide/astro";
             Portas abertas para receber você e sua família.
           </h2>
           <p class="mt-5 text-base leading-8 text-muted">
-            Encontre a igreja em Vila Arlindo e acompanhe a programação pública para escolher o melhor momento da sua visita.
+            Nesta página você encontra o caminho até a igreja e os horários principais para
+            organizar sua visita.
           </p>
           <a href="/localizacao" class="mt-8 inline-flex text-sm font-semibold text-accent underline decoration-accent/30 underline-offset-4 hover:decoration-accent">
             Ver localização completa
@@ -141,7 +136,8 @@ import { Heart, Users, Notebook, Flame, Clock } from "@lucide/astro";
           <p class="section-kicker">Grupos e encontros</p>
           <h2 class="mt-4 font-serif text-3xl font-semibold leading-none text-text sm:text-4xl">Acompanhe a vida da igreja sem repetir informação.</h2>
           <p class="mt-4 text-base leading-8 text-muted">
-            Os grupos da comunidade e os horários públicos estão organizados em páginas próprias, facilitando a consulta de forma mais direta.
+            Cada assunto foi separado por página: grupos para encontros por público e localização
+            para horários e visita.
           </p>
           <div class="mt-6 flex flex-col gap-3 sm:flex-row">
             <a href="/grupos" class="inline-flex text-sm font-semibold text-accent hover:text-text">
@@ -157,40 +153,25 @@ import { Heart, Users, Notebook, Flame, Clock } from "@lucide/astro";
       <article class="section-card p-6 sm:p-10">
         <p class="section-kicker">Agenda</p>
         <h2 class="mt-4 font-serif text-3xl font-semibold leading-none text-text sm:text-4xl">Momentos públicos da semana e do mês</h2>
+        <p class="mt-4 text-base leading-8 text-muted">
+          Abaixo estão alguns encontros regulares. Para ver o calendário completo, acesse a agenda.
+        </p>
         <div class="mt-8 grid gap-4">
-          <div class="info-item">
-            <div class="icon-card-row">
-              <span class="icon-badge-sm" aria-hidden="true">
-                <Clock class="icon-svg" stroke-width={1.9} />
-              </span>
-              <div>
-                <p class="section-kicker">Quarta-feira</p>
-                <p class="mt-2 text-base leading-7 text-muted">19h · Culto de oração</p>
+          {
+            homeAgendaHighlights.map((item) => (
+              <div class="info-item">
+                <div class="icon-card-row">
+                  <span class="icon-badge-sm" aria-hidden="true">
+                    <Clock class="icon-svg" stroke-width={1.9} />
+                  </span>
+                  <div>
+                    <p class="section-kicker">{item.label}</p>
+                    <p class="mt-2 text-base leading-7 text-muted">{item.details}</p>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <div class="info-item">
-            <div class="icon-card-row">
-              <span class="icon-badge-sm" aria-hidden="true">
-                <Clock class="icon-svg" stroke-width={1.9} />
-              </span>
-              <div>
-                <p class="section-kicker">2ª sexta</p>
-                <p class="mt-2 text-base leading-7 text-muted">20h · Encontro de jovens</p>
-              </div>
-            </div>
-          </div>
-          <div class="info-item">
-            <div class="icon-card-row">
-              <span class="icon-badge-sm" aria-hidden="true">
-                <Clock class="icon-svg" stroke-width={1.9} />
-              </span>
-              <div>
-                <p class="section-kicker">Sábado</p>
-                <p class="mt-2 text-base leading-7 text-muted">19h · Culto da família e crianças</p>
-              </div>
-            </div>
-          </div>
+            ))
+          }
         </div>
       </article>
     </div>
@@ -201,11 +182,11 @@ import { Heart, Users, Notebook, Flame, Clock } from "@lucide/astro";
       <p class="text-xs font-semibold uppercase tracking-[0.28em] text-amber-200/70">Venha nos visitar</p>
       <h2 class="mt-4 font-serif text-3xl font-semibold leading-none sm:text-5xl">Esperamos você em Vila Arlindo</h2>
       <p class="mx-auto mt-5 max-w-2xl text-lg leading-8 text-stone-300">
-        Será um prazer receber sua visita e apresentar a rotina da igreja, sua localização e seus encontros públicos.
+        Para planejar sua visita, consulte a localização completa ou abra a rota direto no mapa.
       </p>
       <div class="mt-10 flex w-full flex-col items-center justify-center gap-4 sm:flex-row">
         <a href="/localizacao" class="button-primary w-full max-w-[22rem] sm:min-w-[220px] sm:w-auto">Ver localização completa</a>
-        <a href="https://www.google.com/maps/place/5%C2%AA+Igreja+do+Evangelho+Quadrangular+de+Vila+Arlindo/@-29.6458416,-52.2986292,17z/data=!3m1!4b1!4m6!3m5!1s0x951c971cdc06b81d:0xbd292610bdb25035!8m2!3d-29.6458463!4d-52.2960489!16s%2Fg%2F11vhtm1f9m" target="_blank" rel="noreferrer" class="button-secondary w-full max-w-[22rem] border-white/15 bg-white/10 text-white hover:bg-white/18 hover:text-white sm:min-w-[220px] sm:w-auto">
+        <a href={churchInfo.mapsPlaceUrl} target="_blank" rel="noreferrer" class="button-secondary w-full max-w-[22rem] border-white/15 bg-white/10 text-white hover:bg-white/18 hover:text-white sm:min-w-[220px] sm:w-auto">
           Abrir no Google Maps
         </a>
       </div>

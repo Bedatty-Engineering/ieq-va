@@ -1,44 +1,9 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
 import { Users, Clock, User } from "@lucide/astro";
+import { getGruposPageData } from "../features/grupos/content/getGruposPageData";
+import BaseLayout from "../layouts/BaseLayout.astro";
 
-const grupos = [
-  {
-    nome: "Grupo de Crianças",
-    publico: "Infância",
-    horario: "Sábados às 19h",
-    descricao:
-      "Um espaço preparado para ensinar a Palavra com linguagem adequada, cuidado e alegria, ajudando as crianças a crescerem na fé desde cedo."
-  },
-  {
-    nome: "Grupo de Jovens",
-    publico: "Juventude",
-    horario: "2ª sexta às 20h",
-    descricao:
-      "Encontros voltados ao fortalecimento espiritual, comunhão e direção bíblica para os desafios próprios dessa fase da vida."
-  },
-  {
-    nome: "Grupo de Homens",
-    publico: "Homens",
-    horario: "2º domingo às 9h",
-    descricao:
-      "Um ambiente de oração, responsabilidade cristã e encorajamento mútuo para homens que desejam servir a Deus, à família e à igreja."
-  },
-  {
-    nome: "Grupo de Mulheres",
-    publico: "Mulheres",
-    horario: "1º domingo às 14h30",
-    descricao:
-      "Momentos de comunhão, ensino e cuidado espiritual para mulheres que desejam caminhar juntas em fé, serviço e crescimento cristão."
-  },
-  {
-    nome: "Grupo de Casais",
-    publico: "Casais",
-    horario: "Consulte a igreja",
-    descricao:
-      "Encontros pensados para fortalecer o relacionamento conjugal, promover diálogo saudável e consolidar lares firmados em princípios bíblicos."
-  }
-];
+const { groups } = await getGruposPageData();
 ---
 
 <BaseLayout
@@ -54,8 +19,8 @@ const grupos = [
             Espaços de comunhão, cuidado e crescimento para cada fase da vida.
           </h1>
           <p class="mt-6 max-w-2xl section-copy">
-            A vida da igreja também acontece em encontros específicos que aproximam pessoas com
-            realidades semelhantes, fortalecendo vínculos, discipulado e convivência cristã.
+            Nos cards abaixo você encontra cada grupo organizado por público e horário, facilitando
+            a consulta do encontro mais adequado.
           </p>
           <div class="eyebrow-rule"></div>
         </div>
@@ -67,11 +32,11 @@ const grupos = [
             </span>
             <p class="section-kicker">Vida em comunidade</p>
             <h2 class="mt-4 font-serif text-4xl font-semibold leading-none text-text">
-              Cada grupo amplia o cuidado pastoral e a proximidade entre irmãos.
+              Cada grupo atende uma fase da vida com cuidado mais próximo.
             </h2>
             <p class="mt-5 text-base leading-8 text-muted">
-              Esses encontros reforçam o acolhimento da igreja e criam oportunidades práticas para
-              oração, ensino bíblico e relacionamento saudável.
+              O objetivo é tornar mais simples encontrar onde participar e acompanhar os encontros
+              da igreja.
             </p>
           </div>
         </div>
@@ -80,22 +45,35 @@ const grupos = [
   </section>
 
   <section class="site-container pb-12 sm:pb-16">
-    <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+    <div class="mb-8">
+      <p class="section-kicker">Encontros</p>
+      <h2 class="mt-3 font-serif text-3xl font-semibold leading-none text-text sm:text-4xl">
+        Escolha o grupo conforme o público e consulte o horário no próprio card.
+      </h2>
+    </div>
+
+    <div class="grupo-grid">
       {
-        grupos.map((grupo) => (
-          <article class="feature-card">
-            <span class="icon-badge" aria-hidden="true">
-              <Users class="icon-svg-lg" stroke-width={1.9} />
-            </span>
-            <p class="section-kicker">{grupo.publico}</p>
-            <h2 class="mt-3 font-serif text-3xl font-semibold text-text">{grupo.nome}</h2>
-            <div class="mt-4 flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.18em] text-accent">
-              <span class="icon-badge-sm" aria-hidden="true">
+        groups.map((grupo, index) => (
+          <article class:list={["grupo-card", index === 0 && "grupo-card-featured"]}>
+            <div class="flex items-start justify-between gap-4">
+              <span class="icon-badge shrink-0" aria-hidden="true">
+                <Users class="icon-svg-lg" stroke-width={1.9} />
+              </span>
+              <p class="grupo-card-audience">{grupo.audience}</p>
+            </div>
+
+            <div class="mt-6">
+              <h2 class="font-serif text-3xl font-semibold text-text">{grupo.title}</h2>
+              <p class="mt-4 text-base leading-8 text-muted">{grupo.summary}</p>
+            </div>
+
+            <div class="grupo-card-schedule">
+              <span class="icon-badge-sm shrink-0" aria-hidden="true">
                 <Clock class="icon-svg" stroke-width={1.9} />
               </span>
-              <span>{grupo.horario}</span>
+              <span>{grupo.schedule}</span>
             </div>
-            <p class="mt-4 text-base leading-8 text-muted">{grupo.descricao}</p>
           </article>
         ))
       }
@@ -107,16 +85,15 @@ const grupos = [
       <article class="section-card p-8 sm:p-10">
         <p class="section-kicker">Propósito</p>
         <h2 class="mt-4 font-serif text-4xl font-semibold leading-none text-text">
-          Grupos que servem pessoas, famílias e a caminhada cristã da comunidade.
+          Cada encontro reforça cuidado, comunhão e ensino bíblico.
         </h2>
         <div class="mt-6 space-y-5 text-base leading-8 text-muted">
           <p>
-            Os grupos da igreja ajudam a criar uma rotina mais próxima entre os membros, com espaço
-            para escuta, ensino e fortalecimento espiritual.
+            Os grupos criam espaços mais próximos para oração, escuta e fortalecimento espiritual.
           </p>
           <p>
-            Cada frente atende uma necessidade específica da comunidade local, sem perder a unidade
-            da igreja como corpo, família e lugar de serviço cristão.
+            Embora cada card destaque um público específico, todos fazem parte da mesma vida em
+            comunidade da igreja.
           </p>
         </div>
       </article>
@@ -132,8 +109,8 @@ const grupos = [
               <div>
                 <h3 class="font-serif text-2xl font-semibold text-text">Quem pode participar?</h3>
                 <p class="mt-2 text-base leading-7 text-muted">
-                  Os grupos são organizados para públicos específicos, mas todos são recebidos com
-                  atenção e orientação sobre o encontro mais adequado.
+                  Veja o público indicado em cada card. Se tiver dúvida, a igreja pode orientar qual
+                  encontro faz mais sentido para você.
                 </p>
               </div>
             </div>
@@ -146,8 +123,8 @@ const grupos = [
               <div>
                 <h3 class="font-serif text-2xl font-semibold text-text">Como saber os horários?</h3>
                 <p class="mt-2 text-base leading-7 text-muted">
-                  A programação pode ser acompanhada nos canais oficiais e também na página de
-                  localização do site.
+                  Os horários principais estão nos cards acima. Para acompanhar a programação
+                  pública completa, consulte também a página de localização.
                 </p>
               </div>
             </div>
@@ -164,8 +141,8 @@ const grupos = [
         Encontre o grupo que acompanha a sua fase de vida.
       </h2>
       <p class="mx-auto mt-5 max-w-2xl text-lg leading-8 text-stone-300">
-        Se você deseja visitar a igreja e conhecer melhor os encontros da comunidade, veja a
-        localização e a programação pública.
+        Se o próximo passo for visitar a igreja, a página de localização concentra mapa, endereço e
+        horários públicos.
       </p>
       <div class="mt-10">
         <a href="/localizacao" class="button-primary">Ver localização e horários</a>
